@@ -7,6 +7,7 @@
 #  last_name  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  country_id :integer
 #
 
 RSpec.describe User, type: :model do

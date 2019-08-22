@@ -1,18 +1,17 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: countries
 #
 #  id         :integer          not null, primary key
-#  first_name :string
-#  last_name  :string
+#  name       :string
+#  capital    :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  country_id :integer
 #
 
 FactoryBot.define do
-  factory :user do
-    first_name { Faker::Name.first_name }
-    last_name { Faker::Name.last_name }
+  factory :country do
+    name { Faker::Nation.name }
+    capital { Faker::Nation.capital_city }
   end
 end

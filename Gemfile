@@ -6,6 +6,8 @@ gem 'pg', '~> 0.18.4'
 gem 'puma', '~> 3.11'
 gem 'rack-cors', '~> 0.4.0'
 gem 'rails', '~> 6.0.0.rc1'
+gem 'graphql', '~> 1.9.9'
+gem 'graphql-batch', '~> 0.4.1'
 
 group :development, :test do
   gem 'bullet', '~> 6.0.1'
@@ -14,6 +16,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 5.0.2'
   gem 'faker', '~> 1.9.4'
   gem 'rspec-rails', '~> 3.8.2'
+  gem 'graphiql-rails', '~> 1.7.0'
 end
 
 group :development do

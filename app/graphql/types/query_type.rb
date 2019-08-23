@@ -38,19 +38,19 @@ module Types
     end
 
     def user(id:)
-      RecordLoader.for(User).load(id)
+      Loaders::RecordLoader.for(User).load(id)
     end
 
     def book(id:)
-      RecordLoader.for(Book).load(id)
+      Loaders::RecordLoader.for(Book).load(id)
     end
 
     def country(id:)
-      RecordLoader.for(Country).load(id)
+      Loaders::RecordLoader.for(Country).load(id)
     end
 
     def publisher(id:)
-      RecordLoader.for(Publisher).load(id)
+      Loaders::RecordLoader.for(Publisher).load(id)
     end
   end
 end

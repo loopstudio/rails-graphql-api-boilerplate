@@ -1,13 +1,12 @@
 module Mutations
   class CreateUserMutation < Mutations::BaseMutation
-    argument :first_name, String, required: true
-    argument :last_name, String, required: true
+    argument :attributes, Types::UserAttributesType, required: true
 
     field :user, Types::UserType, null: false
     field :errors, [String], null: false
 
-    def resolve(first_name:, last_name:)
-      user = User.new(first_name: first_name, last_name: last_name)
+    def resolve(attributes:)
+      user = User.new(attributes.to_hash)
       if user.save
         {
           user: user,

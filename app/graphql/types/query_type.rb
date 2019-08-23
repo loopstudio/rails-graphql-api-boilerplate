@@ -18,7 +18,7 @@ module Types
     end
 
     def users
-      User.all
+      User.order(:id)
     end
 
     field :user, Types::UserType, null: false do

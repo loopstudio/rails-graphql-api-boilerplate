@@ -8,6 +8,7 @@ gem 'rack-cors', '~> 0.4.0'
 gem 'rails', '~> 6.0.0.rc1'
 gem 'graphql', '~> 1.9.9'
 gem 'graphql-batch', '~> 0.4.1'
+gem 'redis', '~> 4.1.2'
 
 group :development, :test do
   gem 'bullet', '~> 6.0.1'

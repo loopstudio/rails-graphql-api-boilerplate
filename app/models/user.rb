@@ -14,4 +14,12 @@ class User < ApplicationRecord
   belongs_to :country
   has_many :books, dependent: :destroy
   has_many :publishers, through: :books
+
+  after_update :notify_subscriber_of_addition
+
+  private
+
+  def notify_subscriber_of_addition
+    RailsApiBoilerplateSchema.subscriptions.trigger('user_updated', {}, self)
+  end
 end

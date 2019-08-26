@@ -15,7 +15,7 @@
     publishers << Publisher.create!(name: Faker::Company.unique.name, country: country)
 
 
-    user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, country: country)
+    user = User.create!(email: Faker::Internet.unique.email, password: Faker::Internet.password, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, country: country)
 
     5.times do |i|
       user.books.create!(title: Faker::Book.title, publisher_id: publishers[(1 % (i + 1)).floor].id)

@@ -8,15 +8,9 @@ module Mutations
     def resolve(attributes:)
       user = User.new(attributes.to_hash)
       if user.save
-        {
-          user: user,
-          errors: [],
-        }
+        {user: user, errors: []}
       else
-        {
-          user: nil,
-          errors: user.errors.full_messages
-        }
+        {user: nil, errors: user.errors.full_messages}
       end
     end
   end

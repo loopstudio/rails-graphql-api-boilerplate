@@ -14,7 +14,7 @@ module Types
     end
 
     def books
-      Book.all
+      Book.where(user: context[:current_user])
     end
 
     def users

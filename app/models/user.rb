@@ -2,15 +2,19 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  first_name :string
-#  last_name  :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  country_id :integer
+#  id              :integer          not null, primary key
+#  first_name      :string
+#  last_name       :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  country_id      :integer
+#  password_digest :string
+#  email           :string
 #
 
 class User < ApplicationRecord
+  has_secure_password
+
   belongs_to :country
   has_many :books, dependent: :destroy
   has_many :publishers, through: :books

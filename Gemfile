@@ -9,6 +9,8 @@ gem 'rails', '~> 6.0.0.rc1'
 gem 'graphql', '~> 1.9.9'
 gem 'graphql-batch', '~> 0.4.1'
 gem 'redis', '~> 4.1.2'
+gem 'bcrypt', '~> 3.1.13'
+gem 'json_web_token', '~> 0.3.5'
 
 group :development, :test do
   gem 'bullet', '~> 6.0.1'

@@ -4,6 +4,7 @@ module Types
     field :books, [Types::BookType], null: false
     field :countries, [Types::CountryType], null: false
     field :publishers, [Types::PublisherType], null: false
+    field :events, [Types::EventType], null: false
 
     def countries
       Country.all
@@ -19,6 +20,10 @@ module Types
 
     def users
       User.order(:id)
+    end
+
+    def events
+      Event.all
     end
 
     field :user, Types::UserType, null: false do
@@ -37,6 +42,18 @@ module Types
       argument :id, ID, required: true
     end
 
+    field :event, Types::EventType, null: false do
+      argument :id, ID, required: true
+    end
+
+    field :events_by_name, Integer, null: false do
+      argument :name, String, required: true
+    end
+
+    def events_by_name(name:)
+      Event.where(field_name: name).size
+    end
+
     def user(id:)
       Loaders::RecordLoader.for(User).load(id)
     end
@@ -51,6 +68,10 @@ module Types
 
     def publisher(id:)
       Loaders::RecordLoader.for(Publisher).load(id)
+    end
+
+    def event(id:)
+      Loaders::RecordLoader.for(Event).load(id)
     end
   end
 end

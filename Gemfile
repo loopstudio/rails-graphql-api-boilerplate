@@ -1,16 +1,16 @@
 source 'https://rubygems.org'
 ruby '2.6.0'
 
+gem 'bcrypt', '~> 3.1.13'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'graphql', '~> 1.9.9'
+gem 'graphql-batch', '~> 0.4.1'
+gem 'json_web_token', '~> 0.3.5'
 gem 'pg', '~> 0.18.4'
 gem 'puma', '~> 3.11'
 gem 'rack-cors', '~> 0.4.0'
 gem 'rails', '~> 6.0.0.rc1'
-gem 'graphql', '~> 1.9.9'
-gem 'graphql-batch', '~> 0.4.1'
 gem 'redis', '~> 4.1.2'
-gem 'bcrypt', '~> 3.1.13'
-gem 'json_web_token', '~> 0.3.5'
 
 group :development, :test do
   gem 'bullet', '~> 6.0.1'
@@ -18,8 +18,8 @@ group :development, :test do
   gem 'dotenv-rails', '~> 2.7.4'
   gem 'factory_bot_rails', '~> 5.0.2'
   gem 'faker', '~> 1.9.4'
-  gem 'rspec-rails', '~> 3.8.2'
   gem 'graphiql-rails', '~> 1.7.0'
+  gem 'rspec-rails', '~> 3.8.2'
 end
 
 group :development do

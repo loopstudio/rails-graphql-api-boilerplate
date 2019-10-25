@@ -14,7 +14,7 @@ module Mutations
 
         token = AuthToken.token(user)
 
-        {user: user, token: token}
+        { user: user, token: token }
       end
     end
   end

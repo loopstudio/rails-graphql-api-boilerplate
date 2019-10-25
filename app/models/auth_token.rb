@@ -4,7 +4,7 @@ class AuthToken
   end
 
   def self.token(user)
-    payload = {user_id: user.id}
+    payload = { user_id: user.id }
     JsonWebToken.sign(payload, key: key)
   end
 

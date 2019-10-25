@@ -10,9 +10,9 @@ module Mutations
       def resolve(id:, attributes:)
         user = User.find(id)
         if user.update_attributes(attributes.to_hash)
-          {user: user, errors: []}
+          { user: user, errors: [] }
         else
-          {user: nil, errors: user.errors.full_messages}
+          { user: nil, errors: user.errors.full_messages }
         end
       end
     end

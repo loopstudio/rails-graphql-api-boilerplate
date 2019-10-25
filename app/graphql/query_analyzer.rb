@@ -2,7 +2,8 @@ class QueryAnalyzer
   def analyze?(query)
     return false if query.blank?
     return false if query.selected_operation_name == 'IntrospectionQuery'
-    return true
+
+    true
   end
 
   # Called before the visit.

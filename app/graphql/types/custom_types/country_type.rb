@@ -4,12 +4,12 @@ module Types
       field :id, ID, null: false
       field :name, String, null: true
       field :capital, String, null: true
-      field :users, [Types::CustomTypes::UserType], null: true, resolve: -> (object, args, context) do
+      field :users, [Types::CustomTypes::UserType], null: true, resolve: lambda { |object, _args, _context|
         Loaders::AssociationLoader.for(Country, :users).load(object)
-      end
-      field :books, [Types::CustomTypes::BookType], null: true, resolve: -> (object, args, context) do
+      }
+      field :books, [Types::CustomTypes::BookType], null: true, resolve: lambda { |object, _args, _context|
         Loaders::AssociationLoader.for(Country, :books).load(object)
-      end
+      }
     end
   end
 end

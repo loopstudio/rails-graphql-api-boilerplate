@@ -1,8 +1,19 @@
+require: rubocop-rails
+
+AllCops:
+  Exclude:
+    - vendor/**/*
+    - .circleci/*
+    - db/schema.rb
+    - bin/bundle
+
 Documentation:
   Enabled: false
 
 Metrics/AbcSize:
   Max: 15
+  Exclude:
+    - db/migrate/*
 
 Metrics/BlockLength:
   CountComments: false
@@ -35,6 +46,8 @@ Metrics/LineLength:
   URISchemes:
     - http
     - https
+  Exclude:
+    - config/**/*
 
 Metrics/ParameterLists:
   Max: 5
@@ -44,4 +57,11 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/ModuleFunction:
+  Enabled: false
+
+LexicallyScopedActionFilter:
+  Exclude:
+      - app/controllers/**/**
+
+Rails/NotNullColumn:
   Enabled: false

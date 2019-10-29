@@ -1,6 +1,8 @@
 class AddPasswordDigestToUser < ActiveRecord::Migration[6.0]
   def change
-    add_column :users, :password_digest, :string
-    add_column :users, :email, :string
+    change_table :users, bulk: true do |t|
+      t.string :password_digest
+      t.string :email
+    end
   end
 end

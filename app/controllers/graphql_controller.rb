@@ -1,6 +1,5 @@
 class GraphqlController < ApplicationController
   def execute
-    variables = ensure_hash(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
     context = {
@@ -21,10 +20,15 @@ class GraphqlController < ApplicationController
 
   private
 
-  def current_user
-    return nil if request.headers['Authorization'].blank?
+  def variables
+    ensure_hash(params[:variables])
+  end
 
-    token = request.headers['Authorization'].split(' ').last
+  def current_user
+    authorization_headers = request.headers['Authorization']
+    return nil if authorization_headers.blank?
+
+    token = authorization_headers.split(' ').last
     return nil if token.blank?
 
     AuthToken.verify(token)
@@ -49,12 +53,14 @@ class GraphqlController < ApplicationController
   end
 
   def handle_error_in_development(error)
-    logger.error error.message
-    logger.error error.backtrace.join("\n")
+    message = error.message
+    backtrace = error.backtrace
+    logger.error(message)
+    logger.error(backtrace.join("\n"))
 
     render(
-      json: { error: { message: error.message, backtrace: error.backtrace }, data: {} },
-      status: 500
+      json: { error: { message: message, backtrace: backtrace }, data: {} },
+      status: :internal_server_error
     )
   end
 end

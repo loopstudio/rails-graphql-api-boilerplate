@@ -11,6 +11,6 @@
 
 class Publisher < ApplicationRecord
   belongs_to :country
-  has_many :books
+  has_many :books, dependent: :destroy
   has_many :users, through: :books
 end

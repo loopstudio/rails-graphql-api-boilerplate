@@ -19,8 +19,8 @@ class GraphqlChannel < ApplicationCable::Channel
     )
 
     payload = {
-      result: result.subscription? ? { data: nil } : result.to_h,
-      more: result.subscription?
+      result: subscription? ? { data: nil } : result.to_h,
+      more: subscription?
     }
 
     # Track the subscription here so we can remove it
@@ -28,6 +28,10 @@ class GraphqlChannel < ApplicationCable::Channel
     @subscription_ids << context[:subscription_id] if result.context[:subscription_id]
 
     transmit(payload)
+  end
+
+  def subscription?
+    result.subscription?
   end
 
   def unsubscribed

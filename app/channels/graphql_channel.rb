@@ -1,4 +1,6 @@
 class GraphqlChannel < ApplicationCable::Channel
+  delegate :subscription?, to: result
+
   def subscribed
     @subscription_ids = []
   end
@@ -28,10 +30,6 @@ class GraphqlChannel < ApplicationCable::Channel
     @subscription_ids << context[:subscription_id] if result.context[:subscription_id]
 
     transmit(payload)
-  end
-
-  def subscription?
-    result.subscription?
   end
 
   def unsubscribed

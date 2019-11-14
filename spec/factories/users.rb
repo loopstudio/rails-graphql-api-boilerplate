@@ -2,11 +2,14 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  first_name :string
-#  last_name  :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :integer          not null, primary key
+#  first_name      :string
+#  last_name       :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  country_id      :integer
+#  password_digest :string
+#  email           :string
 #
 
 FactoryBot.define do

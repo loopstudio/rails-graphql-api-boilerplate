@@ -17,7 +17,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails', '~> 2.7.4'
   gem 'factory_bot_rails', '~> 5.0.2'
-  gem 'faker', '~> 1.9.4'
+  gem 'faker', '~> 2.10.1'
   gem 'graphiql-rails', '~> 1.7.0'
   gem 'rspec-rails', '~> 3.8.2'
 end

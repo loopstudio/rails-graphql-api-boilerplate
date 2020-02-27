@@ -8,7 +8,7 @@ gem 'graphql-batch', '~> 0.4.2'
 gem 'json_web_token', '~> 0.3.5'
 gem 'pg', '~> 0.18.4'
 gem 'puma', '~> 3.12'
-gem 'rack-cors', '~> 0.4.0'
+gem 'rack-cors', '~> 1.0.5'
 gem 'rails', '~> 6.0.0.rc1'
 gem 'redis', '~> 4.1.2'
 

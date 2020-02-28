@@ -217,7 +217,7 @@ GEM
       rubocop (>= 0.70.0)
     ruby-progressbar (1.10.1)
     safe_yaml (1.0.5)
-    shoulda-matchers (4.1.0)
+    shoulda-matchers (4.3.0)
       activesupport (>= 4.2.0)
     simplecov (0.13.0)
       docile (~> 1.1.0)
@@ -281,7 +281,7 @@ DEPENDENCIES
   rspec-rails (~> 3.8.2)
   rubocop (~> 0.78.0)
   rubocop-rails (~> 2.0.1)
-  shoulda-matchers (~> 4.1.0)
+  shoulda-matchers (~> 4.3.0)
   simplecov (~> 0.13.0)
   spring
   spring-watcher-listen (~> 2.0.0)

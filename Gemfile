@@ -13,7 +13,7 @@ gem 'rails', '~> 6.0.0.rc1'
 gem 'redis', '~> 4.1.2'
 
 group :development, :test do
-  gem 'bullet', '~> 6.0.1'
+  gem 'bullet', '~> 6.1.0'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails', '~> 2.7.4'
   gem 'factory_bot_rails', '~> 5.1.1'

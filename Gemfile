@@ -15,7 +15,7 @@ gem 'redis', '~> 4.1.3'
 group :development, :test do
   gem 'bullet', '~> 6.1.0'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'dotenv-rails', '~> 2.7.4'
+  gem 'dotenv-rails', '~> 2.7.5'
   gem 'factory_bot_rails', '~> 5.1.1'
   gem 'faker', '~> 2.10.2'
   gem 'graphiql-rails', '~> 1.7.0'

@@ -6,7 +6,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'graphql', '~> 1.10.4'
 gem 'graphql-batch', '~> 0.4.2'
 gem 'json_web_token', '~> 0.3.5'
-gem 'pg', '~> 1.2.2'
+gem 'pg', '~> 1.2.3'
 gem 'puma', '~> 4.3'
 gem 'rack-cors', '~> 1.1.1'
 gem 'rails', '~> 6.0.0.rc1'

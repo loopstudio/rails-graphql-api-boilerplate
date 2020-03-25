@@ -58,9 +58,9 @@ GEM
       zeitwerk (~> 2.1, >= 2.1.4)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    annotate (2.6.5)
-      activerecord (>= 2.3.0)
-      rake (>= 0.8.7)
+    annotate (3.1.1)
+      activerecord (>= 3.2, < 7.0)
+      rake (>= 10.4, < 14.0)
     ast (2.4.0)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
@@ -255,13 +255,13 @@ GEM
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
-    zeitwerk (2.2.2)
+    zeitwerk (2.3.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate (~> 2.6.5)
+  annotate (~> 3.1.1)
   bcrypt (~> 3.1.13)
   bootsnap (>= 1.4.2)
   bullet (~> 6.1.0)

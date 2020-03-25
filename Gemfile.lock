@@ -97,7 +97,7 @@ GEM
     factory_bot_rails (5.1.1)
       factory_bot (~> 5.1.0)
       railties (>= 4.2.0)
-    faker (2.10.2)
+    faker (2.11.0)
       i18n (>= 1.6, < 2)
     ffi (1.12.2)
     globalid (0.4.2)
@@ -268,7 +268,7 @@ DEPENDENCIES
   byebug
   dotenv-rails (~> 2.7.5)
   factory_bot_rails (~> 5.1.1)
-  faker (~> 2.10.2)
+  faker (~> 2.11.0)
   graphiql-rails (~> 1.7.0)
   graphql (~> 1.10.5)
   graphql-batch (~> 0.4.2)

@@ -15,10 +15,6 @@
 class User < ApplicationRecord
   has_secure_password
 
-  belongs_to :country
-  has_many :books, dependent: :destroy
-  has_many :publishers, through: :books
-
   after_update :notify_subscriber_of_addition
 
   private

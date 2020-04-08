@@ -7,6 +7,9 @@ AllCops:
     - db/schema.rb
     - bin/bundle
 
+Bundler/OrderedGems:
+  Enabled: false
+
 Layout/LineLength:
   Max: 100
   AllowURI: true
@@ -15,9 +18,6 @@ Layout/LineLength:
     - https
   Exclude:
     - config/**/*
-
-Layout/SpaceAroundMethodCallOperator:
-  Enabled: true
 
 Lint/RaiseException:
   Enabled: true
@@ -36,6 +36,7 @@ Metrics/BlockLength:
   Exclude:
     - config/**/*
     - spec/**/*
+    - lib/tasks/auto_annotate_models.rake
 
 Metrics/BlockNesting:
   Max: 4
@@ -62,9 +63,6 @@ Metrics/ParameterLists:
 Style/Documentation:
   Enabled: false
 
-Style/ExponentialNotation:
-  Enabled: true
-
 Style/FrozenStringLiteralComment:
   Enabled: false
 
@@ -80,11 +78,17 @@ Style/HashTransformValues:
 Style/ModuleFunction:
   Enabled: false
 
-# Rails Cops
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
 
-Rails/NotNullColumn:
-  Enabled: false
+LexicallyScopedActionFilter:
+  Exclude:
+    - app/controllers/**/**
 
 Rails/RakeEnvironment:
   Exclude:
-    - lib/tasks/analyze_code.rake
+    - lib/tasks/linters.rake
+    - lib/tasks/auto_annotate_models.rake
+
+Rails/NotNullColumn:
+  Enabled: false

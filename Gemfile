@@ -33,6 +33,7 @@ group :development do
 end
 
 group :test do
+  gem 'rspec-json_expectations', '~> 2.2.0'
   gem 'shoulda-matchers', '~> 4.3.0'
   gem 'simplecov', '~> 0.18.5'
   gem 'webmock', '~> 3.8.3'

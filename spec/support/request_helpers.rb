@@ -5,10 +5,6 @@ module RequestHelpers
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def auth_headers
-    @auth_headers ||= user.create_new_auth_token
-  end
-
   def mutation_path(name, attributes:, return_types:, headers: nil)
     mutation_params = {
       query:
@@ -20,6 +16,8 @@ module RequestHelpers
           }
         GQL
     }
+
+    # TODO. GraphQL.parse(params) so an error is raised if the body is malformed
 
     graphql_request(params: mutation_params, headers: headers)
   end

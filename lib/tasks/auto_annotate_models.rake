@@ -1,5 +1,5 @@
 if Rails.env.development?
-  task :set_annotation_options do
+  task set_annotation_options: :environment do
     Annotate.set_defaults({
                             'position_in_routes' => 'before',
                             'position_in_class' => 'before',

@@ -1,27 +1,18 @@
 class GraphqlController < ApplicationController
   def execute
-    query = params[:query]
-    operation_name = params[:operationName]
-    context = {
-      current_user: current_user
-    }
-    result = RailsApiBoilerplateSchema.execute(
-      query,
-      variables: variables,
-      context: context,
-      operation_name: operation_name
-    )
-    render json: result
-  rescue StandardError => e
-    raise e unless Rails.env.development?
+    result = if params[:_json]
+               GraphqlService.multiplex(params[:_json], context: context)
+             else
+               GraphqlService.execute(params, context: context)
+             end
 
-    handle_error_in_development e
+    render json: result
   end
 
   private
 
-  def variables
-    ensure_hash(params[:variables])
+  def context
+    { current_user: current_user }
   end
 
   def current_user
@@ -32,35 +23,5 @@ class GraphqlController < ApplicationController
     return nil if token.blank?
 
     AuthToken.verify(token)
-  end
-
-  # Handle form data, JSON body, or a blank value
-  def ensure_hash(ambiguous_param)
-    case ambiguous_param
-    when String
-      if ambiguous_param.present?
-        ensure_hash(JSON.parse(ambiguous_param))
-      else
-        {}
-      end
-    when Hash, ActionController::Parameters
-      ambiguous_param
-    when nil
-      {}
-    else
-      raise ArgumentError, I18n.t('errors.unexpected_param', param: ambiguous_param.to_s)
-    end
-  end
-
-  def handle_error_in_development(error)
-    message = error.message
-    backtrace = error.backtrace
-    logger.error(message)
-    logger.error(backtrace.join("\n"))
-
-    render(
-      json: { error: { message: message, backtrace: backtrace }, data: {} },
-      status: :internal_server_error
-    )
   end
 end

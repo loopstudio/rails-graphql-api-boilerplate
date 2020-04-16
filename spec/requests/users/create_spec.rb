@@ -11,6 +11,8 @@ describe 'POST /api/v1/users', type: :request do
   let(:password) { 'abcd1234' }
 
   let(:response_content) { json[:data][:createUser] }
+  let(:errors) { json[:errors] }
+  let(:first_error) { JSON.parse(errors.first[:message]) }
 
   let(:attributes) do
     <<~GQL
@@ -32,7 +34,6 @@ describe 'POST /api/v1/users', type: :request do
           lastName
           email
         }
-        errors
         token
       }
     GQL
@@ -44,7 +45,7 @@ describe 'POST /api/v1/users', type: :request do
     specify do
       request
 
-      expect(json[:errors]).to_not be
+      expect(errors).to_not be
     end
 
     specify do
@@ -86,7 +87,7 @@ describe 'POST /api/v1/users', type: :request do
       it 'returns an error message' do
         request
 
-        expect(response_content[:errors]).to include("Email can't be blank")
+        expect(first_error['email'].first).to include("can't be blank")
       end
 
       it 'does not create a user' do
@@ -102,7 +103,7 @@ describe 'POST /api/v1/users', type: :request do
       it 'returns an error message' do
         request
 
-        expect(response_content[:errors]).to include("Password can't be blank")
+        expect(first_error['password'].first).to include("can't be blank")
       end
 
       it 'does not create a user' do

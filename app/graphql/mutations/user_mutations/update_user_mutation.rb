@@ -5,15 +5,13 @@ module Mutations
       argument :attributes, Types::CustomTypes::UserAttributesType, required: true
 
       field :user, Types::CustomTypes::UserType, null: false
-      field :errors, [String], null: false
 
       def resolve(id:, attributes:)
         user = User.find(id)
-        if user.update(attributes.to_hash)
-          { user: user, errors: [] }
-        else
-          { user: nil, errors: user.errors.full_messages }
-        end
+
+        return { user: user } if user.update(attributes.to_hash)
+
+        raise GraphQL::ExecutionError, user.errors.messages.to_json
       end
     end
   end

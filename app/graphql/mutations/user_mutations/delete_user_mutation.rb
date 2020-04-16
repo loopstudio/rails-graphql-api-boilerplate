@@ -4,15 +4,13 @@ module Mutations
       argument :id, ID, required: true
 
       field :user, Types::CustomTypes::UserType, null: false
-      field :errors, [String], null: false
 
       def resolve(id:)
         user = User.find(id)
-        if user.destroy
-          { user: user, errors: [] }
-        else
-          { user: nil, errors: user.errors.full_messages }
-        end
+
+        return { user: user } if user.destroy
+
+        raise GraphQL::ExecutionError, user.errors.messages.to_json
       end
     end
   end

@@ -19,6 +19,12 @@ Layout/LineLength:
   Exclude:
     - config/**/*
 
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
+
 Lint/RaiseException:
   Enabled: true
 

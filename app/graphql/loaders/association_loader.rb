@@ -13,7 +13,8 @@ module Loaders
 
     def load(record)
       unless record.is_a?(@model)
-        raise TypeError, "#{@model} loader can't load association for #{record.class}"
+        raise TypeError, I18n.t('errors.association_error', model: @model,
+                                                            class: record.class.model_name.human)
       end
       return Promise.resolve(read_association(record)) if association_loaded?(record)
 
@@ -35,7 +36,9 @@ module Loaders
     def validate
       return if @model.reflect_on_association(@association_name)
 
-      raise ArgumentError, "No association #{@association_name} on #{@model}"
+      raise ArgumentError, I18n.t(
+        'errors.association_not_found', model: @model, association: @association_name
+      )
     end
 
     def preload_association(records)

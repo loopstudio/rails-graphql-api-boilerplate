@@ -22,9 +22,6 @@ Layout/LineLength:
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
 
-Style/ExponentialNotation:
-  Enabled: true
-
 Lint/RaiseException:
   Enabled: true
 
@@ -66,8 +63,14 @@ Metrics/ParameterLists:
   Max: 5
   CountKeywordArgs: true
 
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
+
 Style/Documentation:
   Enabled: false
+
+Style/ExponentialNotation:
+  Enabled: true
 
 Style/FrozenStringLiteralComment:
   Enabled: false
@@ -84,17 +87,16 @@ Style/HashTransformValues:
 Style/ModuleFunction:
   Enabled: false
 
-Style/BlockDelimiters:
-  EnforcedStyle: braces_for_chaining
+# Rails Cops
 
-LexicallyScopedActionFilter:
+Rails/LexicallyScopedActionFilter:
   Exclude:
     - app/controllers/**/**
 
-Rails/RakeEnvironment:
-  Exclude:
-    - lib/tasks/linters.rake
-    - lib/tasks/auto_annotate_models.rake
-
 Rails/NotNullColumn:
   Enabled: false
+
+Rails/RakeEnvironment:
+  Exclude:
+    - lib/tasks/auto_annotate_models.rake
+    - lib/tasks/linters.rake

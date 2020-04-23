@@ -1,7 +1,7 @@
 class GraphqlController < ApplicationController
   def execute
-    result = if params[:_json]
-               GraphqlService.multiplex(params[:_json], context: context)
+    result = if _json
+               GraphqlService.multiplex(_json, context: context)
              else
                GraphqlService.execute(params, context: context)
              end
@@ -15,13 +15,7 @@ class GraphqlController < ApplicationController
     { current_user: current_user }
   end
 
-  def current_user
-    authorization_headers = request.headers['Authorization']
-    return nil if authorization_headers.blank?
-
-    token = authorization_headers.split(' ').last
-    return nil if token.blank?
-
-    AuthToken.verify(token)
+  def _json
+    params[:_json]
   end
 end

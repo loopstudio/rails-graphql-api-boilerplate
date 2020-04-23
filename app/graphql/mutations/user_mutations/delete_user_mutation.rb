@@ -5,8 +5,10 @@ module Mutations
 
       field :user, Types::CustomTypes::UserType, null: false
 
+      attr_reader :user
+
       def resolve(id:)
-        user = User.find(id)
+        @user = User.find(id)
 
         return { user: user } if user.destroy
 

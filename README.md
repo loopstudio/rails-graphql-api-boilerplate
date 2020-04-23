@@ -3,7 +3,7 @@
 <div align="center"><strong>Start your next Rails 6 + GraphQL API project in seconds</strong></div>
 
 [![CircleCI](https://circleci.com/gh/loopstudio/rails-graphql-api-boilerplate.svg?style=svg&circle-token=799b3c96fc98db48ef3bc0f2a8ee02ea0995ba2a)](https://circleci.com/gh/loopstudio/rails-graphql-api-boilerplate)
-[![codebeat badge](https://codebeat.co/badges/1213568c-4d37-4f13-8297-4b05dd29a8a7)](https://codebeat.co/a/loopstudio/projects/github-com-loopstudio-rails-graphql-api-boilerplate-master)
+[![codebeat badge](https://codebeat.co/badges/05ab59ff-1c2e-4d80-af7f-3d6b92ad8513)](https://codebeat.co/a/loopstudio/projects/github-com-loopstudio-rails-graphql-api-boilerplate-master)
 
 <sub> Created and maintained with ❤️ by <a href="[https://loopstudio.dev/](https://loopstudio.dev/)">Loop Studio</a> </sub>
 

@@ -17,6 +17,8 @@ class User < ApplicationRecord
 
   after_update :notify_subscriber_of_addition
 
+  validates :email, presence: true, uniqueness: true
+
   private
 
   def notify_subscriber_of_addition

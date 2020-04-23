@@ -3,8 +3,8 @@ module Mutations
     class SignInUserMutation < Mutations::BaseMutation
       argument :auth, Types::CustomTypes::AuthProviderEmailInputType, required: false
 
-      field :token, String, null: true
       field :user, Types::CustomTypes::UserType, null: true
+      field :token, String, null: true
 
       def resolve(auth: nil)
         return unless auth

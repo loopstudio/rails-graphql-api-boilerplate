@@ -1,20 +1,20 @@
 module Mutations
   module UserMutations
     class SignInUserMutation < Mutations::BaseMutation
-      argument :auth, Types::CustomTypes::AuthProviderEmailInputType, required: false
+      argument :attributes, Types::CustomTypes::AuthProviderEmailInputType, required: false
 
       field :user, Types::CustomTypes::UserType, null: true
       field :token, String, null: true
 
-      def resolve(auth: nil)
-        return unless auth
+      def resolve(attributes:)
+        user = User.find_by(email: attributes[:email])
 
-        user = User.find_by(email: auth[:email])
-        return unless user&.authenticate(auth[:password])
-
-        token = AuthToken.token(user)
-
-        { user: user, token: token }
+        if user&.authenticate(attributes[:password])
+          token = AuthToken.token(user)
+          { user: user, token: token }
+        else
+          render_error(I18n.t('errors.invalid_credentials'))
+        end
       end
     end
   end

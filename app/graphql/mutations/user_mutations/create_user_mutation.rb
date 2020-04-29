@@ -7,10 +7,7 @@ module Mutations
       field :token, String, null: true
 
       def resolve(attributes:)
-        user = User.new(attributes.to_hash)
-
-        raise GraphQL::ExecutionError, user.errors.messages.to_json unless user.save
-
+        user = User.create!(attributes.to_hash)
         token = AuthToken.token(user)
         { user: user, token: token }
       end

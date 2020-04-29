@@ -1,4 +1,12 @@
 module RequestHelpers
+  def errors
+    json[:errors]
+  end
+
+  def first_error_message
+    errors.first[:message]
+  end
+
   def json
     raise 'Response is nil. Are you sure you made a request?' unless response
 

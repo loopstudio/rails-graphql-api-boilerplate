@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'POST /api/v1/users', type: :request do
+describe 'Create user mutation request', type: :request do
   subject(:request) do
     mutation_path(:createUser, attributes: attributes, return_types: return_types)
   end
@@ -9,10 +9,6 @@ describe 'POST /api/v1/users', type: :request do
   let(:last_name) { 'Kenobi' }
   let(:email) { 'obikenobi@rebel.com' }
   let(:password) { 'abcd1234' }
-
-  let(:response_content) { json[:data][:createUser] }
-  let(:errors) { json[:errors] }
-  let(:first_error) { JSON.parse(errors.first[:message]) }
 
   let(:attributes) do
     <<~GQL
@@ -38,6 +34,8 @@ describe 'POST /api/v1/users', type: :request do
       }
     GQL
   end
+
+  let(:response_content) { json[:data][:createUser] }
 
   context 'with valid params' do
     let(:created_user) { User.last }
@@ -87,7 +85,7 @@ describe 'POST /api/v1/users', type: :request do
       it 'returns an error message' do
         request
 
-        expect(first_error['email'].first).to include("can't be blank")
+        expect(first_error_message).to include("can't be blank")
       end
 
       it 'does not create a user' do
@@ -103,7 +101,7 @@ describe 'POST /api/v1/users', type: :request do
       it 'returns an error message' do
         request
 
-        expect(first_error['password'].first).to include("can't be blank")
+        expect(first_error_message).to include("can't be blank")
       end
 
       it 'does not create a user' do

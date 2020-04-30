@@ -14,23 +14,22 @@ module RequestHelpers
   end
 
   def mutation_path(name, attributes:, return_types:, headers: nil)
-    mutation_params = {
-      query:
-        <<~GQL
-            mutation {
-            #{name}(
-              input: { attributes: #{attributes} })
-              #{return_types}
-          }
-        GQL
-    }
+    attributes = GraphqlUtils.hash_to_gql(attributes) if attributes.is_a?(Hash)
 
-    # TODO. GraphQL.parse(params) so an error is raised if the body is malformed
+    query = <<~GQL
+        mutation {
+        #{name}(
+          input: { attributes: #{attributes} })
+          #{return_types}
+      }
+    GQL
 
-    graphql_request(params: mutation_params, headers: headers)
+    GraphqlUtils.validate!(query.to_s)
+
+    graphql_request(params: { query: query }, headers: headers)
   end
 
   def graphql_request(params:, headers: nil)
-    post graphql_path, params: params, headers: headers
+    post(graphql_path, params: params, headers: headers)
   end
 end

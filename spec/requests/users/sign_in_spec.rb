@@ -11,12 +11,10 @@ describe 'Sign in user mutation request', type: :request do
   let(:password) { 'abcd1234' }
 
   let(:attributes) do
-    <<~GQL
-      {
-        email: "#{email_param}",
-        password: "#{password_param}"
-      }
-    GQL
+    {
+      email: email_param,
+      password: password_param
+    }
   end
 
   let(:email_param) { email }
@@ -36,9 +34,9 @@ describe 'Sign in user mutation request', type: :request do
     GQL
   end
 
-  context 'with valid params' do
-    let(:response_content) { json[:data][:signInUser] }
+  let(:response_content) { json[:data][:signInUser] }
 
+  context 'with valid params' do
     specify do
       request
 
@@ -87,23 +85,23 @@ describe 'Sign in user mutation request', type: :request do
         expect(first_error).to eq(I18n.t('errors.invalid_credentials'))
       end
 
-      it 'does not create a user' do
-        expect {
-          request
-        }.to_not change(User, :count)
+      it 'does not return the user sign in info' do
+        request
+
+        expect(response_content).to be_nil
       end
 
       it { is_expected.to render_error_code(:bad_request) }
     end
 
     context 'when the email is missing' do
-      let(:email_param) { nil }
+      let(:email_param) { '' }
 
       it_behaves_like 'does not sign in'
     end
 
     context 'when the password is missing' do
-      let(:password_param) { nil }
+      let(:password_param) { '' }
 
       it_behaves_like 'does not sign in'
     end

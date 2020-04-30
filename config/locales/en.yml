@@ -35,3 +35,4 @@ en:
     association_error: "%{model} loader can't load association for %{class}"
     association_not_found: "No association %{association} on %{model}"
     unexpected_param: "Unexpected parameter: %{param}"
+    invalid_credentials: 'Invalid credentials'

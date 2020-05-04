@@ -11,14 +11,12 @@ describe 'Create user mutation request', type: :request do
   let(:password) { 'abcd1234' }
 
   let(:attributes) do
-    <<~GQL
-      {
-         firstName: "#{first_name}",
-         lastName: "#{last_name}",
-         email: "#{email}",
-         password: "#{password}"
-       }
-    GQL
+    {
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      password: password
+    }
   end
 
   let(:return_types) do
@@ -73,19 +71,19 @@ describe 'Create user mutation request', type: :request do
       request
 
       token = response_content[:token]
-      expect(token).to be
+      expect(token).to_not be_nil
       expect(AuthToken.verify(token)).to eq(created_user)
     end
   end
 
   context 'with invalid params' do
     context 'when the email is missing' do
-      let(:email) { nil }
+      let(:email) { '' }
 
       it 'returns an error message' do
         request
 
-        expect(first_error_message).to include("can't be blank")
+        expect(first_error_message).to_not be_nil
       end
 
       it 'does not create a user' do
@@ -96,12 +94,12 @@ describe 'Create user mutation request', type: :request do
     end
 
     context 'when the password is missing' do
-      let(:password) { nil }
+      let(:password) { '' }
 
       it 'returns an error message' do
         request
 
-        expect(first_error_message).to include("can't be blank")
+        expect(first_error_message).to_not be_nil
       end
 
       it 'does not create a user' do

@@ -1,4 +1,8 @@
 module RequestHelpers
+  def auth_headers(some_user = user)
+    { 'Authorization' => AuthToken.token(some_user) }
+  end
+
   def errors
     json[:errors]
   end

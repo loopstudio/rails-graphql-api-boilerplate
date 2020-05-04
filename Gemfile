@@ -10,7 +10,7 @@ gem 'pg', '~> 1.2.3'
 gem 'puma', '~> 4.3'
 gem 'rack-cors', '~> 1.1.1'
 gem 'rails', '~> 6.0.2.2'
-gem 'redis', '~> 4.1.3'
+gem 'redis', '~> 4.1.4'
 
 group :development, :test do
   gem 'bullet', '~> 6.1.0'

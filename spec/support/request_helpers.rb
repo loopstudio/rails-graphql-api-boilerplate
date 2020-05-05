@@ -33,6 +33,18 @@ module RequestHelpers
     graphql_request(params: { query: query }, headers: headers)
   end
 
+  def query_path(return_types:, headers: nil)
+    query = <<~GQL
+      {
+        #{return_types}
+      }
+    GQL
+
+    GraphqlUtils.validate!(query.to_s)
+
+    graphql_request(params: { query: query }, headers: headers)
+  end
+
   def graphql_request(params:, headers: nil)
     post(graphql_path, params: params, headers: headers)
   end

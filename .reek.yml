@@ -32,7 +32,9 @@ detectors:
     exclude: []
   LongParameterList:
     enabled: true
-    exclude: []
+    exclude: [
+      RequestHelpers#mutation_path
+    ]
     max_params: 3
     overrides:
       initialize:
@@ -98,7 +100,7 @@ detectors:
     - '/^.$/'
     - '/[0-9]$/'
     accept:
-      - "/V[0-9]/"
+    - '/V[0-9]/'
   UncommunicativeParameterName:
     enabled: true
     exclude: []
@@ -126,7 +128,9 @@ detectors:
     exclude: []
   UtilityFunction:
     enabled: true
-    exclude: []
+    exclude: [
+      Loaders::AssociationLoader#cache_key
+    ]
     public_methods_only: false
 
 directories:
@@ -147,4 +151,13 @@ directories:
       enabled: false
   "app/uploaders":
     UtilityFunction:
+      enabled: false
+  "db/migrate":
+    UtilityFunction:
+      enabled: false
+    FeatureEnvy:
+      enabled: false
+    TooManyStatements:
+      enabled: false
+    UncommunicativeVariableName:
       enabled: false

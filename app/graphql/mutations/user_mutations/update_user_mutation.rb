@@ -6,6 +6,7 @@ module Mutations
 
       field :user, Types::CustomTypes::UserType, null: false
 
+      # :reek:FeatureEnvy - Remove this comment when solving RGQL-13
       def resolve(id:, attributes:)
         user = User.find(id)
 

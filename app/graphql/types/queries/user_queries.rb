@@ -10,10 +10,12 @@ module Types
         end
       end
 
+      # :reek:UtilityFunction
       def users
         User.order(:id)
       end
 
+      # :reek:UtilityFunction
       def user(id:)
         Loaders::RecordLoader.for(User).load(id)
       end

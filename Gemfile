@@ -9,7 +9,7 @@ gem 'json_web_token', '~> 0.3.5'
 gem 'pg', '~> 1.2.3'
 gem 'puma', '~> 4.3'
 gem 'rack-cors', '~> 1.1.1'
-gem 'rails', '~> 6.0.2.2'
+gem 'rails', '~> 6.0.3'
 gem 'redis', '~> 4.1.4'
 gem 'sentry-raven', '~> 3.0.0'
 

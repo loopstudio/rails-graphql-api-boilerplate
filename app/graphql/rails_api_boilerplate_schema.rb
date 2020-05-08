@@ -1,4 +1,6 @@
 class RailsApiBoilerplateSchema < GraphQL::Schema
+  max_depth 5
+  max_complexity 5
   use GraphQL::Subscriptions::ActionCableSubscriptions, redis: Redis.new
   use GraphQL::Batch
 

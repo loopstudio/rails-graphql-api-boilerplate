@@ -9,6 +9,7 @@ task :linters do
   files_diff = `git diff --diff-filter=ACMRTUXB --name-only origin/master... | \
                xargs | sed "s/\\n/\\s/"`
 
+  files_diff.gsub("\n", '')
   if files_diff.present?
     sh "bundle exec rubocop --force-exclusion #{'-a' if options[:autofix]} #{files_diff}"
     sh "bundle exec reek --force-exclusion -c .reek.yml #{files_diff}"

@@ -8,7 +8,7 @@ module UserRetriever
   private
 
   def token
-    @token ||= "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.BtR_0Mkfx6z6hzV8Fjzou21sBqUUINQr7GtVs619q6M"
+    @token ||= authorization_headers&.split(' ')&.last
   end
 
   def authorization_headers

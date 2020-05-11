@@ -44,8 +44,6 @@ jobs:
         bin/rails db:setup
 
     - name: Run Linters
-      env:
-        RAILS_ENV: test
       run: |
         bundle exec reek -c .reek.yml
 

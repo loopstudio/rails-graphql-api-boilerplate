@@ -7,7 +7,6 @@ module Types
       field :first_name, String, null: true
       field :last_name, String, null: true
       field :email, String, null: false
-      field :users, [UserType], null: true
     end
   end
 end

@@ -1,6 +1,6 @@
 class RailsApiBoilerplateSchema < GraphQL::Schema
-  max_depth ENV.fetch('MAX_DEPTH').to_i
-  max_complexity ENV.fetch('MAX_COMPLEXITY').to_i
+  max_depth ENV.fetch('MAX_DEPTH', 5).to_i
+  max_complexity ENV.fetch('MAX_COMPLEXITY', 30).to_i
   use GraphQL::Subscriptions::ActionCableSubscriptions, redis: Redis.new
   use GraphQL::Batch
 

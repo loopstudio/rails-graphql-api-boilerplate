@@ -25,7 +25,7 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: Display the path
-      run: echo $PATH
+      run: cat .reek.yml
       shell: bash
 
     # - name: Set up Ruby 2.6

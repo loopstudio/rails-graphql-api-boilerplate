@@ -10,8 +10,8 @@ default: &default
 
 development:
   <<: *default
-  database: <%= "rails-graphql-api-boilerplate-development" %>
+  database: <%= "#{ENV['DB_NAME']}-development" %>
 
 test:
   <<: *default
-  database: <%= "rails-graphql-api-boilerplate-test" %>
+  database: <%= "#{ENV['DB_NAME']}-test" %>

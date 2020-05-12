@@ -128,6 +128,7 @@ detectors:
     exclude: []
     public_methods_only: false
 
+
 directories:
   "app/services":
     UtilityFunction:

@@ -54,7 +54,7 @@ jobs:
 
     - name: Run Linters
       run: |
-        bundle exec rake linters
+        bundle exec reek -c .reek.yml
 
     - name: Run Tests
       env:

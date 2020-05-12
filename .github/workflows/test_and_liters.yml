@@ -54,7 +54,8 @@ jobs:
 
     - name: Run Linters
       run: |
-        bundle exec reek -c .reek.yml
+        chmod 777 runLinters.sh
+        ./runLinters.sh
 
     - name: Run Tests
       env:

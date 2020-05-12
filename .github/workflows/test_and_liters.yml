@@ -54,8 +54,8 @@ jobs:
 
     - name: Run Linters
       run: |
-        chmod 777 runLinters.sh
-        ./runLinters.sh
+        git fetch origin master:refs/remotes/origin/master
+        bundle exec rake linters
 
     - name: Run Tests
       env:

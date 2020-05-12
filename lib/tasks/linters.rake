@@ -10,6 +10,7 @@ task :linters do
                xargs | sed "s/\\n/\\s/"`
 
   files_diff.gsub("\n", '')
+
   if files_diff.present?
     sh "bundle exec rubocop --force-exclusion #{'-a' if options[:autofix]} #{files_diff}"
     sh "bundle exec reek -c .reek.yml --force-exclusion #{files_diff}"

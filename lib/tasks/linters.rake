@@ -12,6 +12,6 @@ task :linters do
   files_diff.gsub("\n", '')
   if files_diff.present?
     sh "bundle exec rubocop --force-exclusion #{'-a' if options[:autofix]} #{files_diff}"
-    sh "bundle exec reek --force-exclusion #{files_diff}"
+    sh "bundle exec reek --force-exclusion -c .reek.yml #{files_diff}"
   end
 end

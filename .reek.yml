@@ -117,7 +117,6 @@ detectors:
       - "/[A-Z]/"
     accept:
       - "/^_$/"
-      - "e"
   UnusedParameters:
     enabled: true
     exclude: []
@@ -128,6 +127,7 @@ detectors:
     enabled: true
     exclude: []
     public_methods_only: false
+
 directories:
   "app/services":
     UtilityFunction:

@@ -17,8 +17,13 @@ Table of Contents
 - [List of Gems](#list-of-gems)
 - [Getting Started](#getting-started)
 - [Running the Test Suite](#running-the-test-suite)
+- [Pagination](#pagination)
 - [Contributing](#contributing)
 - [Credits](#credits)
+
+Pagination
+--------
+You can find a detailed guide on how to implement pagination [here](PAGINATION.md)
 
 
 Credits

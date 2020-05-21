@@ -3,7 +3,7 @@ ruby '2.6.6'
 
 gem 'bcrypt', '~> 3.1.13'
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'graphql', '~> 1.10.9'
+gem 'graphql', '~> 1.10.10'
 gem 'graphql-batch', '~> 0.4.3'
 gem 'json_web_token', '~> 0.3.5'
 gem 'pg', '~> 1.2.3'

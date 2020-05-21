@@ -20,7 +20,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 5.2.0'
   gem 'faker', '~> 2.11.0'
   gem 'graphiql-rails', '~> 1.7.0'
-  gem 'rspec-rails', '~> 4.0.0'
+  gem 'rspec-rails', '~> 4.0.1'
 end
 
 group :development do

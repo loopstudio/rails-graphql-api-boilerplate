@@ -19,7 +19,13 @@ Layout/LineLength:
   Exclude:
     - config/**/*
 
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
 Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
   Enabled: true
 
 Lint/RaiseException:
@@ -84,8 +90,8 @@ Style/HashTransformKeys:
 Style/HashTransformValues:
   Enabled: true
 
-Style/ModuleFunction:
-  Enabled: false
+Style/SlicingWithRange:
+  Enabled: true
 
 # Rails Cops
 

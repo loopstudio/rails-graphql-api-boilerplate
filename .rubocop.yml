@@ -38,6 +38,7 @@ Metrics/AbcSize:
   Max: 15
   Exclude:
     - db/migrate/*
+    - app/channels/graphql_channel.rb
 
 Metrics/BlockLength:
   CountComments: false

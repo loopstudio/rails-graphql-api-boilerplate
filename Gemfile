@@ -12,6 +12,7 @@ gem 'rack-cors', '~> 1.1.1'
 gem 'rails', '~> 6.0.3'
 gem 'redis', '~> 4.1.4'
 gem 'sentry-raven', '~> 3.0.0'
+gem 'graphiql-rails', '~> 1.7.0'
 
 group :development, :test do
   gem 'bullet', '~> 6.1.0'
@@ -19,7 +20,6 @@ group :development, :test do
   gem 'dotenv-rails', '~> 2.7.5'
   gem 'factory_bot_rails', '~> 5.2.0'
   gem 'faker', '~> 2.11.0'
-  gem 'graphiql-rails', '~> 1.7.0'
   gem 'rspec-rails', '~> 4.0.1'
 end
 

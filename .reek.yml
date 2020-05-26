@@ -162,3 +162,8 @@ directories:
       enabled: false
     UncommunicativeVariableName:
       enabled: false
+  "rubocop":
+    UtilityFunction:
+      enabled: false
+    FeatureEnvy:
+      enabled: false

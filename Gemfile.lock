@@ -107,6 +107,10 @@ GEM
     json_web_token (0.3.5)
       json (~> 2.1)
     kwalify (0.7.2)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.7.0)
+      launchy (~> 2.2)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -263,6 +267,7 @@ DEPENDENCIES
   graphql (~> 1.10.10)
   graphql-batch (~> 0.4.3)
   json_web_token (~> 0.3.5)
+  letter_opener (~> 1.7.0)
   listen (>= 3.0.5, < 3.3)
   pg (~> 1.2.3)
   puma (~> 4.3)
@@ -277,7 +282,7 @@ DEPENDENCIES
   sentry-raven (~> 3.0.0)
   shoulda-matchers (~> 4.3.0)
   simplecov (~> 0.18.5)
-  spring
+  spring (~> 2.1.0)
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
   webmock (~> 3.8.3)

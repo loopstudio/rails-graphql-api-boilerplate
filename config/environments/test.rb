@@ -44,11 +44,15 @@ Rails.application.configure do
   config.active_support.deprecation = :stderr
 
   # Raises error for missing translations.
-  # config.action_view.raise_on_missing_translations = true
+  config.action_view.raise_on_missing_translations = true
 
   config.after_initialize do
     Bullet.enable = true
-    Bullet.bullet_logger = true
+    Bullet.bullet_logger = false
+    Bullet.rails_logger = true
+    Bullet.n_plus_one_query_enable = true
+    Bullet.unused_eager_loading_enable = true
+    Bullet.counter_cache_enable = true
     Bullet.raise = true
   end
 end

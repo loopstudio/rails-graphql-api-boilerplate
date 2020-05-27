@@ -26,7 +26,7 @@ end
 group :development do
   gem 'annotate', '~> 3.1.1'
   gem 'listen', '>= 3.0.5', '< 3.3'
-  gem 'reek', '~> 6.0.0', require: false
+  gem 'reek', '~> 6.0.1', require: false
   gem 'rubocop', '~> 0.84.0', require: false
   gem 'rubocop-rails', '~> 2.5.2', require: false
   gem 'spring'

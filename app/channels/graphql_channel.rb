@@ -1,5 +1,7 @@
 class GraphqlChannel < ApplicationCable::Channel
-  delegate :subscription?, to: result
+  delegate :subscription?, to: :result
+
+  attr_reader :result
 
   def subscribed
     @subscription_ids = []
@@ -13,7 +15,7 @@ class GraphqlChannel < ApplicationCable::Channel
       channel: self
     }
 
-    result = RailsApiBoilerplateSchema.execute(
+    @result = RailsApiBoilerplateSchema.execute(
       query: query,
       context: context,
       variables: variables,

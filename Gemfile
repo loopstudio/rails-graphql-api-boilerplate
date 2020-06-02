@@ -26,8 +26,8 @@ gem 'json_web_token', '~> 0.3.5'
 gem 'bcrypt', '~> 3.1.13'
 
 # Monitoring errors
-gem 'sentry-raven', '~> 3.0.0'
 gem 'graphiql-rails', '~> 1.7.0'
+gem 'sentry-raven', '~> 3.0.0'
 
 group :development, :test do
   gem 'bullet', '~> 6.1.0'

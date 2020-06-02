@@ -1,14 +1,12 @@
 require: rubocop-rails
 
 AllCops:
+  NewCops: enable
   Exclude:
     - vendor/**/*
     - .circleci/*
     - db/schema.rb
     - bin/bundle
-
-Bundler/OrderedGems:
-  Enabled: false
 
 Layout/LineLength:
   Max: 100
@@ -18,21 +16,6 @@ Layout/LineLength:
     - https
   Exclude:
     - config/**/*
-
-Layout/EmptyLinesAroundAttributeAccessor:
-  Enabled: true
-
-Layout/SpaceAroundMethodCallOperator:
-  Enabled: true
-
-Lint/DeprecatedOpenSSLConstant:
-  Enabled: true
-
-Lint/RaiseException:
-  Enabled: true
-
-Lint/StructNewOverride:
-  Enabled: true
 
 Metrics/AbcSize:
   Max: 15
@@ -76,23 +59,8 @@ Style/BlockDelimiters:
 Style/Documentation:
   Enabled: false
 
-Style/ExponentialNotation:
-  Enabled: true
-
 Style/FrozenStringLiteralComment:
   Enabled: false
-
-Style/HashEachMethods:
-  Enabled: true
-
-Style/HashTransformKeys:
-  Enabled: true
-
-Style/HashTransformValues:
-  Enabled: true
-
-Style/SlicingWithRange:
-  Enabled: true
 
 # Rails Cops
 

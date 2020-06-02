@@ -26,8 +26,8 @@ gem 'json_web_token', '~> 0.3.5'
 gem 'bcrypt', '~> 3.1.13'
 
 # Monitoring errors
-gem 'sentry-raven', '~> 3.0.0'
 gem 'graphiql-rails', '~> 1.7.0'
+gem 'sentry-raven', '~> 3.0.0'
 
 group :development, :test do
   gem 'bullet', '~> 6.1.0'
@@ -42,7 +42,7 @@ group :development do
   gem 'letter_opener', '~> 1.7.0'
   gem 'listen', '>= 3.0.5', '< 3.3'
   gem 'reek', '~> 6.0.1', require: false
-  gem 'rubocop', '~> 0.84.0', require: false
+  gem 'rubocop', '~> 0.85.0', require: false
   gem 'rubocop-rails', '~> 2.5.2', require: false
   gem 'spring', '~> 2.1.0'
   gem 'spring-watcher-listen', '~> 2.0.0'

@@ -1,23 +1,37 @@
 source 'https://rubygems.org'
 ruby '2.7.1'
 
-gem 'bcrypt', '~> 3.1.13'
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'graphql', '~> 1.10.10'
-gem 'graphql-batch', '~> 0.4.3'
-gem 'json_web_token', '~> 0.3.5'
-gem 'pg', '~> 1.2.3'
+gem 'rails', '~> 6.0.3'
+
+# WebServer
 gem 'puma', '~> 4.3'
 gem 'rack-cors', '~> 1.1.1'
-gem 'rails', '~> 6.0.3'
+
+# Graphql
+gem 'graphql', '~> 1.10.10'
+gem 'graphql-batch', '~> 0.4.3'
+
+# Database
+gem 'pg', '~> 1.2.3'
 gem 'redis', '~> 4.1.4'
+
+# Environment variables
+gem 'dotenv-rails', '~> 2.7.5'
+
+# Authentication
+gem 'json_web_token', '~> 0.3.5'
+
+# Encryption
+gem 'bcrypt', '~> 3.1.13'
+
+# Monitoring errors
 gem 'sentry-raven', '~> 3.0.0'
 gem 'graphiql-rails', '~> 1.7.0'
 
 group :development, :test do
   gem 'bullet', '~> 6.1.0'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'dotenv-rails', '~> 2.7.5'
   gem 'factory_bot_rails', '~> 5.2.0'
   gem 'faker', '~> 2.11.0'
   gem 'rspec-rails', '~> 4.0.1'
@@ -25,11 +39,12 @@ end
 
 group :development do
   gem 'annotate', '~> 3.1.1'
+  gem 'letter_opener', '~> 1.7.0'
   gem 'listen', '>= 3.0.5', '< 3.3'
   gem 'reek', '~> 6.0.1', require: false
   gem 'rubocop', '~> 0.84.0', require: false
   gem 'rubocop-rails', '~> 2.5.2', require: false
-  gem 'spring'
+  gem 'spring', '~> 2.1.0'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 

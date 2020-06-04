@@ -7,7 +7,6 @@ require 'rspec/rails'
 require 'spec_helper'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |file| require file }
-require File.expand_path('../lib/graphql_utils', __dir__)
 
 begin
   ActiveRecord::Migration.maintain_test_schema!

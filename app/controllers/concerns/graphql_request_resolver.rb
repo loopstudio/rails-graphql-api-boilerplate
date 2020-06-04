@@ -1,11 +1,11 @@
-module GraphqlResolver
+module GraphqlRequestResolver
   include ActiveSupport::Concern
 
-  def resolve(json, params, context)
-    if json
-      resolve_multiplex(json, context)
+  def resolve(query:, context:)
+    if _json
+      resolve_multiplex(context)
     else
-      resolve_execute(params, context)
+      resolve_execute(query, context)
     end
   end
 
@@ -20,8 +20,8 @@ module GraphqlResolver
     )
   end
 
-  def resolve_multiplex(queries, context)
-    input = queries.map do |query|
+  def resolve_multiplex(context)
+    input = _json.map do |query|
       {
         query: query[:query],
         operation_name: query[:operationName],
@@ -41,5 +41,9 @@ module GraphqlResolver
     when Hash, ActionController::Parameters then input
     else raise ArgumentError, I18n.t('errors.unexpected_param', param: ambiguous_param.to_s)
     end
+  end
+
+  def _json
+    params[:_json]
   end
 end

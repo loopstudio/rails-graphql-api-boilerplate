@@ -1,7 +1,17 @@
-module GraphqlService
-  module_function
+module GraphqlResolver
+  include ActiveSupport::Concern
 
-  def execute(query, context:)
+  def resolve(json, params, context)
+    if json
+      resolve_multiplex(json, context)
+    else
+      resolve_execute(params, context)
+    end
+  end
+
+  private
+
+  def resolve_execute(query, context)
     RailsApiBoilerplateSchema.execute(
       query[:query],
       operation_name: query[:operationName],
@@ -10,7 +20,7 @@ module GraphqlService
     )
   end
 
-  def multiplex(queries, context:)
+  def resolve_multiplex(queries, context)
     input = queries.map do |query|
       {
         query: query[:query],
@@ -32,6 +42,4 @@ module GraphqlService
     else raise ArgumentError, I18n.t('errors.unexpected_param', param: ambiguous_param.to_s)
     end
   end
-
-  private_class_method :hasherize
 end

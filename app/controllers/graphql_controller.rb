@@ -1,10 +1,8 @@
 class GraphqlController < ApplicationController
+  include GraphqlResolver
+
   def execute
-    result = if _json
-               GraphqlService.multiplex(_json, context: context)
-             else
-               GraphqlService.execute(params, context: context)
-             end
+    result = resolve(_json, params, context)
 
     render json: result
   end

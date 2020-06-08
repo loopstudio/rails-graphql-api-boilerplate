@@ -1,85 +1,70 @@
 ---
+
+### Generic smell configuration
+
 detectors:
   Attribute:
     enabled: true
-    exclude: []
   BooleanParameter:
     enabled: true
-    exclude: []
   ClassVariable:
     enabled: true
-    exclude: []
   ControlParameter:
     enabled: true
-    exclude: []
   DataClump:
     enabled: true
-    exclude: []
     max_copies: 2
     min_clump_size: 2
   DuplicateMethodCall:
-    allow_calls: []
     enabled: true
-    exclude: []
     max_calls: 1
   FeatureEnvy:
     enabled: true
-    exclude: []
+    exclude:
+      - GraphqlRequestResolver#resolve_execute
+      - GraphqlRequestResolver#resolve_multiplex
+      - GraphqlUtils::ParseErrorBetterPrinted#initialize
   InstanceVariableAssumption:
     enabled: false
-    exclude: []
   IrresponsibleModule:
     enabled: false
-    exclude: []
   LongParameterList:
     enabled: true
-    exclude: [
-      RequestHelpers#mutation_path
-    ]
+    exclude:
+      - RequestHelpers#mutation_path
     max_params: 3
     overrides:
       initialize:
         max_params: 5
   LongYieldList:
     enabled: true
-    exclude: []
     max_params: 3
   ManualDispatch:
     enabled: true
-    exclude: []
   MissingSafeMethod:
     enabled: false
-    exclude: []
   ModuleInitialize:
     enabled: true
-    exclude: []
   NestedIterators:
     enabled: true
-    exclude: []
     ignore_iterators:
       - tap
     max_allowed_nesting: 1
   NilCheck:
     enabled: false
-    exclude: []
   RepeatedConditional:
     enabled: true
-    exclude: []
     max_ifs: 2
   SubclassedFromCoreClass:
     enabled: true
-    exclude: []
   TooManyConstants:
     enabled: true
-    exclude: []
     max_constants: 5
   TooManyInstanceVariables:
     enabled: true
-    exclude: []
     max_instance_variables: 4
   TooManyMethods:
     enabled: true
-    exclude: []
     max_methods: 15
   TooManyStatements:
     enabled: true
@@ -87,9 +72,7 @@ detectors:
       - initialize
     max_statements: 9
   UncommunicativeMethodName:
-    accept: []
     enabled: true
-    exclude: []
     reject:
       - "/^[a-z]$/"
       - "/[0-9]$/"
@@ -98,16 +81,13 @@ detectors:
     accept:
       - "/V[0-9]/"
     enabled: true
-    exclude: []
     reject:
     - '/^.$/'
     - '/[0-9]$/'
     accept:
     - "/V[0-9]/"
   UncommunicativeParameterName:
-    accept: []
     enabled: true
-    exclude: []
     reject:
       - /^.$/
       - "/[0-9]$/"
@@ -118,22 +98,22 @@ detectors:
       - /^_$/
       - e
     enabled: true
-    exclude: []
     reject:
       - /^.$/
       - "/[0-9]$/"
       - "/[A-Z]/"
   UnusedParameters:
     enabled: true
-    exclude: []
   UnusedPrivateMethod:
     enabled: false
-    exclude: []
   UtilityFunction:
     enabled: true
     exclude:
       - Loaders::AssociationLoader#cache_key
     public_methods_only: false
+
+### Directory specific configuration
+
 directories:
   app/jobs:
     FeatureEnvy:
@@ -153,7 +133,7 @@ directories:
   app/uploaders:
     UtilityFunction:
       enabled: false
-  "db/migrate":
+  db/migrate:
     UtilityFunction:
       enabled: false
     FeatureEnvy:

@@ -1,7 +1,17 @@
-module GraphqlService
-  module_function
+module GraphqlRequestResolver
+  include ActiveSupport::Concern
 
-  def execute(query, context:)
+  def resolve(query:, context:)
+    if _json
+      resolve_multiplex(context)
+    else
+      resolve_execute(query, context)
+    end
+  end
+
+  private
+
+  def resolve_execute(query, context)
     RailsApiBoilerplateSchema.execute(
       query[:query],
       operation_name: query[:operationName],
@@ -10,8 +20,8 @@ module GraphqlService
     )
   end
 
-  def multiplex(queries, context:)
-    input = queries.map do |query|
+  def resolve_multiplex(context)
+    input = _json.map do |query|
       {
         query: query[:query],
         operation_name: query[:operationName],
@@ -33,5 +43,7 @@ module GraphqlService
     end
   end
 
-  private_class_method :hasherize
+  def _json
+    params[:_json]
+  end
 end

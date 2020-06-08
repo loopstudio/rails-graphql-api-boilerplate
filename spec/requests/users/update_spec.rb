@@ -4,7 +4,12 @@ describe 'Update user mutation request', type: :request do
   let!(:user) { create(:user) }
 
   subject(:request) do
-    mutation_path(:updateUser, attributes: attributes, return_types: return_types, headers: auth_headers)
+    mutation_path(
+      :updateUser,
+      attributes: attributes,
+      return_types: return_types,
+      headers: auth_headers
+    )
   end
 
   let(:first_name) { 'Obi Wan' }
@@ -17,7 +22,7 @@ describe 'Update user mutation request', type: :request do
       first_name: first_name,
       last_name: last_name,
       email: email,
-      password: password,
+      password: password
     }
   end
 
@@ -37,7 +42,7 @@ describe 'Update user mutation request', type: :request do
   let(:response_content) { json[:data][:updateUser] }
 
   context 'with valid params' do
-    let(:updated_user) { User.last }
+    let(:updated_user) { user.reload }
 
     specify do
       request
@@ -51,7 +56,7 @@ describe 'Update user mutation request', type: :request do
       expect(response).to have_http_status(:ok)
     end
 
-    it 'updates a user' do
+    it 'updates current user' do
       request
 
       expect(updated_user.first_name).to eq(attributes[:first_name])
@@ -67,7 +72,41 @@ describe 'Update user mutation request', type: :request do
         email: updated_user.email
       )
     end
-
   end
 
+  context 'with invalid params' do
+    let(:updated_user) { user.reload }
+
+    context 'when the email is missing' do
+      let(:email) { '' }
+
+      it 'returns an error message' do
+        request
+
+        expect(first_error_message).to_not be_nil
+      end
+
+      it 'does not update current user' do
+        expect {
+          request
+        }.to_not change{updated_user}
+      end
+    end
+
+    context 'when the email is taken' do
+      let!(:user2) { create(:user, email: 'obikenobi@rebel.com') }
+
+      it 'returns an error message' do
+        request
+
+        expect(first_error_message).to_not be_nil
+      end
+
+      it 'does not update current user' do
+        expect {
+          request
+        }.to_not change{updated_user}
+      end
+    end
+  end
 end

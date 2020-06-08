@@ -1,4 +1,5 @@
 class CreateUsers < ActiveRecord::Migration[6.0]
+  disable_ddl_transaction!
   enable_extension 'citext'
 
   def change
@@ -11,6 +12,6 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    add_index :users, :email, unique: true
+    add_index :users, :email, unique: true, algorithm: :concurrently
   end
 end

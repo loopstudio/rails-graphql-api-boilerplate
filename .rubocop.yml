@@ -1,4 +1,6 @@
-require: rubocop-rails
+require:
+  - rubocop-rails
+  - ./rubocop/rubocop
 
 AllCops:
   NewCops: enable
@@ -7,6 +9,7 @@ AllCops:
     - .circleci/*
     - db/schema.rb
     - bin/bundle
+    - rubocop/**/*.rb
 
 Layout/LineLength:
   Max: 100

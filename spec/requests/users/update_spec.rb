@@ -89,7 +89,7 @@ describe 'Update user mutation request', type: :request do
       it 'does not update current user' do
         expect {
           request
-        }.to_not change{updated_user}
+        }.to_not change(updated_user, :email)
       end
     end
 
@@ -105,7 +105,7 @@ describe 'Update user mutation request', type: :request do
       it 'does not update current user' do
         expect {
           request
-        }.to_not change{updated_user}
+        }.to_not change(updated_user, :email)
       end
     end
   end

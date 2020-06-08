@@ -1,14 +1,13 @@
 module Mutations
   module UserMutations
     class UpdateUserMutation < Mutations::BaseMutation
-      argument :id, ID, required: true
       argument :attributes, Types::CustomTypes::UserAttributesType, required: true
 
       field :user, Types::CustomTypes::UserType, null: false
 
       # :reek:FeatureEnvy - Remove this comment when solving RGQL-13
-      def resolve(id:, attributes:)
-        user = User.find(id)
+      def resolve(attributes:)
+        user = User.find(context[:current_user].id)
 
         return { user: user } if user.update(attributes.to_hash)
 

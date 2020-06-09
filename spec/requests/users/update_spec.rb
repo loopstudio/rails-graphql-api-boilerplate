@@ -92,7 +92,7 @@ describe 'Update user mutation request', type: :request do
     end
 
     context 'when the email is taken' do
-      let!(:user2) { create(:user, email: email) }
+      let!(:other_user) { create(:user, email: email) }
 
       it 'returns an error message' do
         request

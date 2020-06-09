@@ -1,5 +1,5 @@
 module Types
   class QueryType < Types::BaseObject
-    include Types::Queries::UserQueries
+    field :user, resolver: Queries::User
   end
 end

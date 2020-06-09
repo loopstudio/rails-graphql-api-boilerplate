@@ -83,6 +83,7 @@ You can always check all the Mutations and Queries available by going to `/graph
 ### Mutations
 
 #### Sign Up
+
 Request:
 ```
 mutation {
@@ -93,6 +94,7 @@ mutation {
   }
 }
 ```
+
 Response:
 ```
 {
@@ -154,7 +156,6 @@ mutation {
     }
   }
 }
-
 ```
 
 Response:

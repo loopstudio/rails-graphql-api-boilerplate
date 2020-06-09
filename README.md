@@ -78,131 +78,19 @@ Pass the `-a` option to auto-fix (only for some linterns).
 You can find a detailed guide on how to implement pagination [here](PAGINATION.md)
 
 ## Features
+
 You can always check all the Mutations and Queries available by going to `/graphiql` and looking at the Docs.
 
 ### Mutations
 
-#### Sign Up
-
-Request:
-```
-mutation {
-  createUser(input: {attributes: {firstName: "Loop", lastName: "Studio", email: "loopito@loopstudio.dev", password: "password"}}) {
-    user {
-      firstName
-    }
-  }
-}
-```
-
-Response:
-```
-{
-  "data": {
-    "createUser": {
-      "user": {
-        "firstName": "Loop"
-      }
-    }
-  }
-}
-```
-
-#### Sign In
-
-Request
-```
-mutation {
-  signInUser(input: {attributes: {email: "loopito@loopstudio.dev", password: "password"}}) {
-    user {
-      id
-      firstName
-      lastName
-      email
-    }
-    token
-  }
-}
-```
-
-Response:
-```
-{
-  "data": {
-    "signInUser": {
-      "user": {
-        "id": "1",
-        "firstName": "Loop",
-        "lastName": "Studio",
-        "email": "loopito@loopstudio.dev"
-      },
-      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.2gPy95F4URGk4jpacKKNz75qX_FUL8maTleLoWWHd1I"
-    }
-  }
-}
-```
-
-#### Update profile
-
-Request:
-```
-mutation {
-  updateUser(input: {attributes: {firstName: "Loopito", lastName: "Studio", email: "loopito_loop@loopstudio.dev", password: "password_1"}}) {
-    user {
-      id
-      firstName
-      lastName
-      email
-    }
-  }
-}
-```
-
-Response:
-```
-{
-  "data": {
-    "updateUser": {
-      "user": {
-        "id": "1",
-        "firstName": "Loopito",
-        "lastName": "Studio",
-        "email": "loopito_loop@loopstudio.dev"
-      }
-    }
-  }
-}
-```
+- Sign Up
+- Sign In
+- Update profile
+- Delete user
 
 ### Queries
 
-#### Show profile
-
-Request:
-```
-{
-  user {
-    id
-    firstName
-    lastName
-    email
-  }
-}
-```
-
-Response:
-```
-{
-  "data": {
-    "user": {
-      "id": "1",
-      "firstName": "Loop",
-      "lastName": "Studio",
-      "email": "loopito@loopstudio.dev"
-    }
-  }
-}
-```
+- Show profile
 
 ## Continuous Deployment
 

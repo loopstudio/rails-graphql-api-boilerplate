@@ -1,15 +1,18 @@
 module Mutations
   module UserMutations
     class CreateUserMutation < Mutations::BaseMutation
-      argument :attributes, Types::CustomTypes::UserAttributesType, required: true
+      argument :first_name, String, required: true
+      argument :last_name, String, required: true
+      argument :email, String, required: true
+      argument :password, String, required: true
 
       field :user, Types::CustomTypes::UserType, null: false
       field :token, String, null: true
 
       attr_reader :user
 
-      def resolve(attributes:)
-        @user = User.create!(attributes.to_hash)
+      def resolve(**attributes)
+        @user = User.create!(attributes)
         token = AuthToken.token(user)
         { user: user, token: token }
       end

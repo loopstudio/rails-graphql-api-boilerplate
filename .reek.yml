@@ -11,6 +11,8 @@ detectors:
     enabled: true
   ControlParameter:
     enabled: true
+    exclude:
+      - resolve
   DataClump:
     enabled: true
     max_copies: 2
@@ -30,8 +32,6 @@ detectors:
     enabled: false
   LongParameterList:
     enabled: true
-    exclude:
-      - RequestHelpers#mutation_path
     max_params: 3
     overrides:
       initialize:

@@ -1,16 +1,18 @@
 module Mutations
   module UserMutations
     class UpdateUserMutation < Mutations::BaseMutation
-      argument :attributes, Types::CustomTypes::UserAttributesType, required: true
+      argument :first_name, String, required: false
+      argument :last_name, String, required: false
+      argument :email, String, required: false
+      argument :password, String, required: false
 
       field :user, Types::CustomTypes::UserType, null: false
 
-      def resolve(attributes:)
+      def resolve(**attributes)
         user = User.find(context[:current_user].id)
+        user.update!(attributes)
 
-        return { user: user } if user.update(attributes.to_hash)
-
-        raise GraphQL::ExecutionError, user.errors.messages.to_json
+        { user: user }
       end
     end
   end

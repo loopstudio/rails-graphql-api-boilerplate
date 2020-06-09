@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Sign in user mutation request', type: :request do
   subject(:request) do
-    mutation_path(:signInUser, attributes: attributes, return_types: return_types)
+    graphql_request(request_body, variables: request_variables)
   end
 
   let!(:user) { create(:user, email: email, password: password) }
@@ -10,7 +10,23 @@ describe 'Sign in user mutation request', type: :request do
   let(:email) { 'user@email.com' }
   let(:password) { 'abcd1234' }
 
-  let(:attributes) do
+  let(:request_body) do
+    <<~GQL
+      mutation SignIn($email: String!, $password: String!) {
+        signInUser(input: {email: $email, password: $password}) {
+          user {
+            id
+            firstName
+            lastName
+            email
+          }
+          token
+        }
+      }
+    GQL
+  end
+
+  let(:request_variables) do
     {
       email: email_param,
       password: password_param
@@ -19,20 +35,6 @@ describe 'Sign in user mutation request', type: :request do
 
   let(:email_param) { email }
   let(:password_param) { password }
-
-  let(:return_types) do
-    <<~GQL
-      {
-        user {
-          id
-          firstName
-          lastName
-          email
-        }
-        token
-      }
-    GQL
-  end
 
   let(:response_content) { json[:data][:signInUser] }
 
@@ -90,8 +92,6 @@ describe 'Sign in user mutation request', type: :request do
 
         expect(response_content).to be_nil
       end
-
-      it { is_expected.to render_error_code(:bad_request) }
     end
 
     context 'when the email is missing' do

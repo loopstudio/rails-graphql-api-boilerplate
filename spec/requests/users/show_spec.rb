@@ -3,20 +3,22 @@ require 'rails_helper'
 describe 'Show current user request', type: :request do
   let!(:user) { create(:user) }
 
-  let(:return_types) do
+  let(:request_body) do
     <<~GQL
-      user {
-        id
-        firstName
-        lastName
-        email
+      query {
+        user {
+          id
+          firstName
+          lastName
+          email
+        }
       }
     GQL
   end
 
   context 'when the user is logged in' do
     subject(:request) do
-      query_path(return_types: return_types, headers: auth_headers)
+      graphql_request(request_body, headers: auth_headers)
     end
 
     specify do
@@ -45,7 +47,7 @@ describe 'Show current user request', type: :request do
 
   context 'when the user is not logged in' do
     subject(:request) do
-      query_path(return_types: return_types)
+      graphql_request(request_body)
     end
 
     it 'returns an error message' do

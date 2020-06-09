@@ -4,12 +4,7 @@ describe 'Update user mutation request', type: :request do
   let!(:user) { create(:user) }
 
   subject(:request) do
-    mutation_path(
-      :updateUser,
-      attributes: attributes,
-      return_types: return_types,
-      headers: auth_headers
-    )
+    graphql_request(request_body, variables: request_variables, headers: auth_headers)
   end
 
   let(:first_name) { 'Obi Wan' }
@@ -17,26 +12,38 @@ describe 'Update user mutation request', type: :request do
   let(:email) { 'obikenobi@rebel.com' }
   let(:password) { 'abcd1234' }
 
-  let(:attributes) do
-    {
-      first_name: first_name,
-      last_name: last_name,
-      email: email,
-      password: password
-    }
-  end
-
-  let(:return_types) do
+  let(:request_body) do
     <<~GQL
-      {
-        user {
-          id
-          firstName
-          lastName
-          email
+      mutation UpdateUser(
+        $firstName: String,
+        $lastName: String,
+        $email: String,
+        $password: String
+      ) {
+        updateUser(input: {
+          firstName: $firstName,
+          lastName: $lastName,
+          email: $email,
+          password: $password
+        }) {
+          user {
+            id
+            firstName
+            lastName
+            email
+          }
         }
       }
     GQL
+  end
+
+  let(:request_variables) do
+    {
+      firstName: first_name,
+      lastName: last_name,
+      email: email,
+      password: password
+    }
   end
 
   let(:response_content) { json[:data][:updateUser] }
@@ -59,7 +66,7 @@ describe 'Update user mutation request', type: :request do
     it 'updates current user' do
       request
 
-      expect(updated_user.first_name).to eq(attributes[:first_name])
+      expect(updated_user.first_name).to eq(first_name)
     end
 
     it 'returns the user data' do

@@ -89,12 +89,12 @@ describe 'Update user mutation request', type: :request do
       it 'does not update current user' do
         expect {
           request
-        }.to_not change(updated_user, :email)
+        }.to_not change(updated_user.reload, :email)
       end
     end
 
     context 'when the email is taken' do
-      let!(:user2) { create(:user, email: 'obikenobi@rebel.com') }
+      let!(:user2) { create(:user, email: email) }
 
       it 'returns an error message' do
         request
@@ -105,7 +105,7 @@ describe 'Update user mutation request', type: :request do
       it 'does not update current user' do
         expect {
           request
-        }.to_not change(updated_user, :email)
+        }.to_not change(updated_user.reload, :email)
       end
     end
   end

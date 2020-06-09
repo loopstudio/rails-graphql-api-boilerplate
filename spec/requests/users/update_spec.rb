@@ -75,7 +75,6 @@ describe 'Update user mutation request', type: :request do
   end
 
   context 'with invalid params' do
-    let(:updated_user) { user.reload }
 
     context 'when the email is missing' do
       let(:email) { '' }
@@ -89,7 +88,7 @@ describe 'Update user mutation request', type: :request do
       it 'does not update current user' do
         expect {
           request
-        }.to_not change(updated_user.reload, :email)
+        }.to_not change(user.reload, :email)
       end
     end
 
@@ -105,7 +104,7 @@ describe 'Update user mutation request', type: :request do
       it 'does not update current user' do
         expect {
           request
-        }.to_not change(updated_user.reload, :email)
+        }.to_not change(user.reload, :email)
       end
     end
   end

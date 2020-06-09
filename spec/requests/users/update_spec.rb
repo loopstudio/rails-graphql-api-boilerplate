@@ -75,7 +75,6 @@ describe 'Update user mutation request', type: :request do
   end
 
   context 'with invalid params' do
-
     context 'when the email is missing' do
       let(:email) { '' }
 

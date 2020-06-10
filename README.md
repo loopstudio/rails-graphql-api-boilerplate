@@ -24,6 +24,7 @@
 
 - Language: Ruby 2.6.6+
 - Framework: Rails 6.0.3+
+- Query language: GraphQL 1.10.10+
 - Webserver: Puma
 - Test Framework: Rspec
 - Databases: Postgres & Redis
@@ -75,6 +76,21 @@ Pass the `-a` option to auto-fix (only for some linterns).
 ## Pagination
 
 You can find a detailed guide on how to implement pagination [here](PAGINATION.md)
+
+## Features
+
+You can always check all the Mutations and Queries available by going to `/graphiql` and looking at the Docs.
+
+### Mutations
+
+- Sign up
+- Sign in
+- Update profile
+- Delete user
+
+### Queries
+
+- Show profile
 
 ## Continuous Deployment
 

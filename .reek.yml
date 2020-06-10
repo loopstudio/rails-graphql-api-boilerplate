@@ -115,6 +115,9 @@ detectors:
 ### Directory specific configuration
 
 directories:
+  app/graphql/query_analyzers/concerns:
+    UtilityFunction:
+      enabled: false
   app/jobs:
     FeatureEnvy:
       enabled: false

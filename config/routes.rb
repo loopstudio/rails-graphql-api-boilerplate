@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  if ENV.fetch('MOUNT_GRAPHIQL', 'false') == 'true'
+  if GraphqlConfig::EXPOSE_API_INSIGHTS
     mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: 'graphql#execute'
   end
 

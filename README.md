@@ -1,4 +1,4 @@
-
+![image](https://user-images.githubusercontent.com/15303963/84329869-3dc6c880-ab5c-11ea-9cff-37a78887e75b.png)
 
 <div align="center"><strong>Start your next Rails 6 + GraphQL API project in seconds</strong></div>
 

@@ -83,8 +83,8 @@ You can always check all the Mutations and Queries available by going to `/graph
 
 ### Mutations
 
-- Sign Up
-- Sign In
+- Sign up
+- Sign in
 - Update profile
 - Delete user
 

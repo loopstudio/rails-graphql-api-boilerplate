@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/31075855/78668329-e03ea300-78b0-11ea-91a7-57ef8da01108.jpg" alt="rails boilerplate banner" align="center" />
+
 
 <div align="center"><strong>Start your next Rails 6 + GraphQL API project in seconds</strong></div>
 

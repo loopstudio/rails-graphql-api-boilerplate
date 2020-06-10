@@ -17,35 +17,9 @@ module RequestHelpers
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def mutation_path(name, attributes:, return_types:, headers: nil)
-    attributes = GraphqlUtils.hash_to_gql(attributes) if attributes.is_a?(Hash)
+  def graphql_request(request, variables: {}, headers: nil)
+    GraphqlUtils.validate!(request.to_s)
 
-    query = <<~GQL
-        mutation {
-        #{name}(
-          input: { attributes: #{attributes} })
-          #{return_types}
-      }
-    GQL
-
-    GraphqlUtils.validate!(query.to_s)
-
-    graphql_request(params: { query: query }, headers: headers)
-  end
-
-  def query_path(return_types:, headers: nil)
-    query = <<~GQL
-      {
-        #{return_types}
-      }
-    GQL
-
-    GraphqlUtils.validate!(query.to_s)
-
-    graphql_request(params: { query: query }, headers: headers)
-  end
-
-  def graphql_request(params:, headers: nil)
-    post(graphql_path, params: params, headers: headers)
+    post(graphql_path, params: { query: request, variables: variables }, headers: headers)
   end
 end

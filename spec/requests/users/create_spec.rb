@@ -1,36 +1,46 @@
 require 'rails_helper'
 
 describe 'Create user mutation request', type: :request do
-  subject(:request) do
-    mutation_path(:createUser, attributes: attributes, return_types: return_types)
-  end
+  subject(:request) { graphql_request(mutation_request, variables: request_variables) }
 
   let(:first_name) { 'Obi Wan' }
   let(:last_name) { 'Kenobi' }
   let(:email) { 'obikenobi@rebel.com' }
   let(:password) { 'abcd1234' }
 
-  let(:attributes) do
+  let(:mutation_request) do
+    <<~GQL
+      mutation SignUp(
+        $email: String!,
+        $password: String!,
+        $firstName: String!,
+        $lastName: String!
+      ) {
+        createUser(input: {
+          email: $email,
+          password: $password,
+          firstName: $firstName,
+          lastName: $lastName
+        }) {
+          user {
+            id
+            firstName
+            lastName
+            email
+          }
+          token
+        }
+      }
+    GQL
+  end
+
+  let(:request_variables) do
     {
-      first_name: first_name,
-      last_name: last_name,
+      firstName: first_name,
+      lastName: last_name,
       email: email,
       password: password
     }
-  end
-
-  let(:return_types) do
-    <<~GQL
-      {
-        user {
-          id
-          firstName
-          lastName
-          email
-        }
-        token
-      }
-    GQL
   end
 
   let(:response_content) { json[:data][:createUser] }

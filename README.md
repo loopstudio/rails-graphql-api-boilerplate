@@ -5,7 +5,7 @@
 ![Github Actions badge](https://github.com/loopstudio/rails-graphql-api-boilerplate/workflows/Tests%20and%20Linters/badge.svg)
 [![Codebeat badge](https://codebeat.co/badges/05ab59ff-1c2e-4d80-af7f-3d6b92ad8513)](https://codebeat.co/a/loopstudio/projects/github-com-loopstudio-rails-graphql-api-boilerplate-master)
 
-<sub> Created and maintained with ❤️ by <a href="[https://loopstudio.dev/](https://loopstudio.dev/)">Loop Studio</a> </sub>
+<sub> Created and maintained with ❤️ by <a href="[https://loopstudio.dev/](https://loopstudio.dev/)">LoopStudio</a> </sub>
 
 <div align="center">A foundation with focus on performance and best practices</div>
 
@@ -149,7 +149,7 @@ If you've noticed a bug or find something that needs to be refactored, feel free
 
 This project is licensed under the MIT license.
 
-Copyright (c) 2020 Loop Studio.
+Copyright (c) 2020 LoopStudio.
 
 For more information see [`LICENSE`](LICENSE)
 

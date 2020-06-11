@@ -15,6 +15,8 @@
 - [Other Gems](#other-gems)
 - [Getting Started](#getting-started)
 - [Code quality](#code-quality)
+- [Tests](#tests)
+- [Graphiql](#graphiql)
 - [Pagination](#pagination)
 - [Continuous Deployment](#continuous-deployment)
 - [Contributing](#contributing)
@@ -33,10 +35,19 @@
 ## Other Gems
 
 #### dotenv-rails
-For environment variables
+For environment variables.
 
-#### Jb
-For building API json views
+#### graphql
+For the implementation of [GraphQL](https://github.com/rmosolgo/graphql-ruby) query language in ruby.
+
+#### graphiql-rails
+[graphiql](https://github.com/graphql/graphiql) is an interactive in-browser IDE that simplifies the testing of your API and exposes the API available mutations, queries and subscriptions.
+
+#### bullet
+For detecting N+1 issues.
+
+#### graphql-batch
+For allowing queries to be batched to avoid the N+1 issues. You can read the documentation [Here](https://github.com/Shopify/graphql-batch#usage).
 
 ## Getting Started
 
@@ -50,7 +61,7 @@ For building API json views
 7.  Run `bundle exec rake db:migrate`
 8.  Run `bundle exec rake db:seed`
 9.  Check the test are passing running `rspec`
-    _At this point you can run `rails s`  and start making your REST API calls at `http://localhost:3000`_
+    _At this point you can run `rails s`  and start making your API calls at `http://localhost:3000`_
 10.  Edit or delete the `CODEOWNERS` file in `.github` directory
 11. Edit this README file to match your own project title and description
  _It's a good practice to keep this file updated as you make important changes to the installation instructions or project characteristics._
@@ -73,9 +84,15 @@ With `rake linters` you can run the code analysis tool, you can omit rules with:
 
 Pass the `-a` option to auto-fix (only for some linterns).
 
+## Graphiql
+
+Graphiql will be mounted on the path `/graphiql`, only if you have set the environment variable `EXPOSE_API_INSIGHTS` in `"true"`.
+
+For example: `http://localhost:3000/graphiql` if you are running your server on 3000 port.
+
 ## Pagination
 
-You can find a detailed guide on how to implement pagination [here](PAGINATION.md)
+You can find a detailed guide on how to implement pagination [here](PAGINATION.md).
 
 ## Features
 

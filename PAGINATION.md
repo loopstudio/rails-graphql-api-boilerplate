@@ -1,7 +1,7 @@
 Pagination
 --------
 
-For cursor pagination you need to define a connection for the model you are querying.
+For cursor pagination, you need to define a connection for the model you are querying.
 
 For example if you need to return the collection of all the User records in the app:
 ```
@@ -126,7 +126,7 @@ with this response:
 }
 ```
 
-Finally the connection could receive some values as parameters to customize de response for only returning the desirable records.
+Finally, the connection could receive some values as parameters to customize de response for only returning the desirable records.
 
 `first: int` returns the first given number of records
 `last: int` returns the last given number of records
@@ -148,4 +148,4 @@ query {
   }
 }
 ```
-or the first 0 values after the desired node when we want to know if it `hasNextPage` while paginating backwards.
+or the first 0 values after the desired node when we want to know if it `hasNextPage` while paginating backward.

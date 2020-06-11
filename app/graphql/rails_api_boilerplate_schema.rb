@@ -1,8 +1,10 @@
 class RailsApiBoilerplateSchema < GraphQL::Schema
-  max_depth ENV.fetch('MAX_DEPTH', 5).to_i
-  max_complexity ENV.fetch('MAX_COMPLEXITY', 30).to_i
+  disable_introspection_entry_points unless GraphqlConfig::EXPOSE_API_INSIGHTS
   use GraphQL::Subscriptions::ActionCableSubscriptions, redis: Redis.new
   use GraphQL::Batch
+  use GraphQL::Analysis::AST
+  query_analyzer QueryAnalyzers::QueryComplexityAnalyzer
+  query_analyzer QueryAnalyzers::QueryDepthAnalyzer
 
   mutation(Types::MutationType)
   query(Types::QueryType)

@@ -46,7 +46,7 @@ describe 'Update user mutation request', type: :request do
     }
   end
 
-  let(:response_content) { json[:data][:updateUser] }
+  let(:response_content) { json.dig(:data, :updateUser) }
 
   context 'with valid params' do
     let(:updated_user) { user.reload }

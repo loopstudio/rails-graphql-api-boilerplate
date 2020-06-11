@@ -43,7 +43,7 @@ describe 'Create user mutation request', type: :request do
     }
   end
 
-  let(:response_content) { json[:data][:createUser] }
+  let(:response_content) { json.dig(:data, :createUser) }
 
   context 'with valid params' do
     let(:created_user) { User.last }

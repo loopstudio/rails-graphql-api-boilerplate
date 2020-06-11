@@ -36,7 +36,7 @@ describe 'Sign in user mutation request', type: :request do
   let(:email_param) { email }
   let(:password_param) { password }
 
-  let(:response_content) { json[:data][:signInUser] }
+  let(:response_content) { json.dig(:data, :signInUser) }
 
   context 'with valid params' do
     specify do

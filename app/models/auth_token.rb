@@ -12,6 +12,6 @@ class AuthToken
     result = JsonWebToken.verify(token, key: key)
     return nil if result[:error]
 
-    User.find_by(id: result[:ok][:user_id])
+    User.find_by(id: result.dig(:ok, :user_id))
   end
 end

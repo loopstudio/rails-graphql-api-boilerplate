@@ -36,7 +36,7 @@ describe 'Show current user request', type: :request do
     it 'returns the current user info' do
       request
 
-      expect(json[:data][:user]).to include_json(
+      expect(json.dig(:data, :user)).to include_json(
         id: user.id.to_s,
         firstName: user.first_name,
         lastName: user.last_name,
@@ -59,7 +59,7 @@ describe 'Show current user request', type: :request do
     it 'does not return any data' do
       request
 
-      expect(json[:data][:user]).to be_nil
+      expect(json.dig(:data, :user)).to be_nil
     end
   end
 end

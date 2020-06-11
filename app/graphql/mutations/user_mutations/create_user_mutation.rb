@@ -7,13 +7,12 @@ module Mutations
       argument :password, String, required: true
 
       field :user, Types::CustomTypes::UserType, null: false
-      field :token, String, null: true
-
-      attr_reader :user
+      field :token, String, null: false
 
       def resolve(**attributes)
-        @user = User.create!(attributes)
+        user = User.create!(attributes)
         token = AuthToken.token(user)
+
         { user: user, token: token }
       end
     end

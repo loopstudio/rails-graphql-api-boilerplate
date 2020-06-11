@@ -9,7 +9,7 @@ module Mutations
       field :user, Types::CustomTypes::UserType, null: false
 
       def resolve(**attributes)
-        user = User.find(context[:current_user].id)
+        user = User.find(context[:current_user]&.id)
         user.update!(attributes)
 
         { user: user }

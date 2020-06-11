@@ -50,16 +50,16 @@ describe 'Show current user request', type: :request do
       graphql_request(request_body)
     end
 
-    it 'returns an error message' do
+    it 'does not return an error message' do
       request
 
-      expect(errors).not_to be_nil
+      expect(errors).to be_nil
     end
 
     it 'does not return any data' do
       request
 
-      expect(json[:data]).to be_nil
+      expect(json[:data][:user]).to be_nil
     end
   end
 end

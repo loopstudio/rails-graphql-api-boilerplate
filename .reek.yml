@@ -110,6 +110,7 @@ detectors:
     enabled: true
     exclude:
       - Loaders::AssociationLoader#cache_key
+      - resolve
     public_methods_only: false
 
 ### Directory specific configuration

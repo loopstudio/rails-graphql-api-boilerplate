@@ -7,8 +7,6 @@ module Mutations
       field :user, Types::CustomTypes::UserType, null: true
       field :token, String, null: true
 
-      attr_reader :user
-
       def resolve(email:, password:)
         user = User.find_by(email: email)
 

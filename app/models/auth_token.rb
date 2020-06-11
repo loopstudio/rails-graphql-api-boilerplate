@@ -1,6 +1,6 @@
 class AuthToken
   def self.key
-    Rails.application.secrets.secret_key_base
+    ENV.fetch('RAILS_MASTER_KEY')
   end
 
   def self.token(user)

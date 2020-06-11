@@ -90,6 +90,8 @@ Graphiql will be mounted on the path `/graphiql`, only if you have set the envir
 
 For example: `http://localhost:3000/graphiql` if you are running your server on 3000 port.
 
+GraphiQL does not allow us to send headers in the request so if you want to use it as a signed-in user you should get the session token and set it as the environment variables `GRAPHIQL_SESSION_TOKEN`, restart the server and then you should be good to go.
+
 ## Pagination
 
 You can find a detailed guide on how to implement pagination [here](PAGINATION.md).

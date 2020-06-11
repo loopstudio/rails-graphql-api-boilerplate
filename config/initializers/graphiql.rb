@@ -1,5 +1,5 @@
 if Rails.env.development?
   GraphiQL::Rails.config.headers['Authorization'] = lambda { |_context|
-    "bearer #{ENV['DEV_BEARER_TOKEN']}"
+    "bearer #{ENV['GRAPHIQL_SESSION_TOKEN']}"
   }
 end

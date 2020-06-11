@@ -1,6 +1,6 @@
 module Queries
   class User < Queries::BaseQuery
-    type Types::CustomTypes::UserType, null: false
+    type Types::CustomTypes::UserType, null: true
 
     def resolve
       context[:current_user]

@@ -14,7 +14,7 @@ gem 'graphql-batch', '~> 0.4.3'
 
 # Database
 gem 'pg', '~> 1.2.3'
-gem 'redis', '~> 4.2.0'
+gem 'redis', '~> 4.2.1'
 
 # Environment variables
 gem 'dotenv-rails', '~> 2.7.5'

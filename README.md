@@ -49,6 +49,9 @@ For detecting N+1 issues.
 #### graphql-batch
 For allowing queries to be batched to avoid the N+1 issues. You can read the documentation [Here](https://github.com/Shopify/graphql-batch#usage).
 
+#### JWT
+To generate the tokens required to authenticate we use [JWT](https://github.com/jwt/ruby-jwt).
+
 ## Getting Started
 
 1.  Make sure that you have Rails 6, PostgreSQL, git cli, and bundle installed.
@@ -56,17 +59,18 @@ For allowing queries to be batched to avoid the N+1 issues. You can read the doc
 3.  Update the values of the `.env.template` file to match your app
 4.  Create your `.env` file. You have an example at `.env.template`. You should be able to copy it and set your own values.
     _It's a good practice to keep the `.env.template` updated every time you need a new environment variable._
-5.  Run `bundle install`
-6.  Run `bundle exec rake db:create`
-7.  Run `bundle exec rake db:migrate`
-8.  Run `bundle exec rake db:seed`
-9.  Check the test are passing running `rspec`
+5.  It is required to set the ENV variable `JWT_ENCODING_KEY` with the result of running `OpenSSL::Digest.new('sha256')` on the rails console to enable the token authentication.
+6.  Run `bundle install`
+7.  Run `bundle exec rake db:create`
+8.  Run `bundle exec rake db:migrate`
+9.  Run `bundle exec rake db:seed`
+10.  Check the test are passing running `rspec`
     _At this point you can run `rails s`  and start making your API calls at `http://localhost:3000`_
-10.  Edit or delete the `CODEOWNERS` file in `.github` directory
-11. Edit this README file to match your project title and description
+11.  Edit or delete the `CODEOWNERS` file in `.github` directory
+12. Edit this README file to match your project title and description
  _It's a good practice to keep this file updated as you make important changes to the installation instructions or project characteristics._
-12. Delete the `.github/workflows/deploy.yml` file, and uncomment the other workflows or configure your continuous deployment workflow since you might use different environments.
-13. Modify the `.github/CODEOWNERS` file
+13. Delete the `.github/workflows/deploy.yml` file, and uncomment the other workflows or configure your continuous deployment workflow since you might use different environments.
+14. Modify the `.github/CODEOWNERS` file
 
 ## Tests
 

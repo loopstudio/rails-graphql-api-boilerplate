@@ -20,7 +20,7 @@ gem 'redis', '~> 4.2.0'
 gem 'dotenv-rails', '~> 2.7.5'
 
 # Authentication
-gem 'json_web_token', '~> 0.3.5'
+gem 'jwt', '~> 2.2.1'
 
 # Encryption
 gem 'bcrypt', '~> 3.1.13'

@@ -1,17 +1,15 @@
 class AuthToken
-  def self.key
-    ENV.fetch('RAILS_MASTER_KEY')
-  end
+  KEY = ENV.fetch('JWT_ENCODING_KEY')
+  ALGORITHM = 'HS256'.freeze
 
   def self.token(user)
     payload = { user_id: user.id }
-    JsonWebToken.sign(payload, key: key)
+    JWT.encode(payload, KEY, ALGORITHM)
   end
 
   def self.verify(token)
-    result = JsonWebToken.verify(token, key: key)
-    return nil if result[:error]
+    decoded_token = JWT.decode(token, KEY, true, { algorithm: ALGORITHM })
 
-    User.find_by(id: result.dig(:ok, :user_id))
+    User.find_by(id: decoded_token.first['user_id'])
   end
 end

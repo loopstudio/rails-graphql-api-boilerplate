@@ -17,7 +17,7 @@ gem 'pg', '~> 1.2.3'
 gem 'redis', '~> 4.2.1'
 
 # Environment variables
-gem 'dotenv-rails', '~> 2.7.5'
+gem 'dotenv-rails', '~> 2.7.6'
 
 # Authentication
 gem 'jwt', '~> 2.2.1'

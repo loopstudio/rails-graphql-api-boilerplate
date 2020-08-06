@@ -6,6 +6,7 @@ module Loaders
     end
 
     def initialize(model, association_name)
+      super
       @model = model
       @association_name = association_name
       validate

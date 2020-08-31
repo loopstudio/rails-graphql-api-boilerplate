@@ -27,7 +27,7 @@ gem 'bcrypt', '~> 3.1.15'
 
 # Monitoring errors
 gem 'graphiql-rails', '~> 1.7.0'
-gem 'sentry-raven', '~> 3.0.2'
+gem 'sentry-raven', '~> 3.0.4'
 
 group :development, :test do
   gem 'bullet', '~> 6.1.0'

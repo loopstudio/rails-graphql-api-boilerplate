@@ -23,7 +23,7 @@ gem 'dotenv-rails', '~> 2.7.6'
 gem 'jwt', '~> 2.2.2'
 
 # Encryption
-gem 'bcrypt', '~> 3.1.15'
+gem 'bcrypt', '~> 3.1.16'
 
 # Monitoring errors
 gem 'graphiql-rails', '~> 1.7.0'

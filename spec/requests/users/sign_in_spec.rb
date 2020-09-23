@@ -42,7 +42,7 @@ describe 'Sign in user mutation request', type: :request do
     specify do
       request
 
-      expect(json[:errors]).to_not be
+      expect(errors).to be_nil
     end
 
     specify do
@@ -54,7 +54,7 @@ describe 'Sign in user mutation request', type: :request do
     it 'does not create a new user' do
       expect {
         request
-      }.to_not change(User, :count)
+      }.not_to change(User, :count)
     end
 
     it 'returns the user data' do
@@ -68,17 +68,25 @@ describe 'Sign in user mutation request', type: :request do
       )
     end
 
+    specify do
+      request
+
+      token = response_content[:token]
+
+      expect(token).not_to be_nil
+    end
+
     it 'sets the authentication headers' do
       request
 
       token = response_content[:token]
-      expect(token).to be
+
       expect(AuthToken.verify(token)).to eq(user)
     end
   end
 
   context 'with invalid params' do
-    let(:first_error) { json[:errors].first[:message] }
+    let(:first_error) { errors.first[:message] }
 
     shared_examples_for 'does not sign in' do
       it 'returns an error message' do

@@ -51,7 +51,7 @@ describe 'Create user mutation request', type: :request do
     specify do
       request
 
-      expect(errors).to_not be
+      expect(errors).to be_nil
     end
 
     specify do
@@ -77,11 +77,19 @@ describe 'Create user mutation request', type: :request do
       )
     end
 
+    specify do
+      request
+
+      token = response_content[:token]
+
+      expect(token).not_to be_nil
+    end
+
     it 'sets the authentication headers' do
       request
 
       token = response_content[:token]
-      expect(token).to_not be_nil
+
       expect(AuthToken.verify(token)).to eq(created_user)
     end
   end
@@ -93,13 +101,13 @@ describe 'Create user mutation request', type: :request do
       it 'returns an error message' do
         request
 
-        expect(first_error_message).to_not be_nil
+        expect(first_error_message).not_to be_nil
       end
 
       it 'does not create a user' do
         expect {
           request
-        }.to_not change(User, :count)
+        }.not_to change(User, :count)
       end
     end
 
@@ -109,13 +117,13 @@ describe 'Create user mutation request', type: :request do
       it 'returns an error message' do
         request
 
-        expect(first_error_message).to_not be_nil
+        expect(first_error_message).not_to be_nil
       end
 
       it 'does not create a user' do
         expect {
           request
-        }.to_not change(User, :count)
+        }.not_to change(User, :count)
       end
     end
   end

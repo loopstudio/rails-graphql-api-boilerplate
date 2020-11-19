@@ -24,11 +24,11 @@
 
 ## Main Characteristics
 
-- Language: Ruby 2.6.6+
+- Language: Ruby 2.7.2+
 - Framework: Rails 6.0.3+
-- Query language: GraphQL 1.10.10+
+- Query language: GraphQL 1.11.6+
 - Webserver: Puma
-- Test Framework: Rspec
+- Test Framework: RSpec
 - Databases: Postgres & Redis
 - Async Processor: Sidekiq
 
@@ -55,7 +55,7 @@ To generate the tokens required to authenticate we use [JWT](https://github.com/
 ## Getting Started
 
 1.  Make sure that you have Rails 6, PostgreSQL, git cli, and bundle installed.
-2.  Clone this repo using `git clone --depth=1 https://github.com/LoopStudio/rails-api-boilerplate.git <YOUR_PROJECT_NAME>`
+2.  Clone this repo using `git clone --depth=1 https://github.com/LoopStudio/rails-graphql-api-boilerplate.git <YOUR_PROJECT_NAME>`
 3.  Update the values of the `.env.template` file to match your app
 4.  Create your `.env` file. You have an example at `.env.template`. You should be able to copy it and set your own values.
     _It's a good practice to keep the `.env.template` updated every time you need a new environment variable._

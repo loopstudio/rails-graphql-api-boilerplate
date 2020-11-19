@@ -36,9 +36,6 @@ Metrics/BlockLength:
     - spec/**/*
     - lib/tasks/auto_annotate_models.rake
 
-
-Metrics/MethodLength:
-  Max: 24
 Style/BlockDelimiters:
   EnforcedStyle: braces_for_chaining
 
@@ -47,3 +44,7 @@ Style/Documentation:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Style/NumericLiterals:
+  Exclude:
+    - config/initializers/strong_migrations.rb

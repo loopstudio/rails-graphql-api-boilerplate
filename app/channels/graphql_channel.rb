@@ -8,27 +8,16 @@ class GraphqlChannel < ApplicationCable::Channel
   end
 
   def execute(data)
-    query = data['query']
-    variables = ensure_hash(data['variables'])
-    operation_name = data['operationName']
-    context = {
-      channel: self
-    }
+    context = { channel: self }
 
-    @result = RailsApiBoilerplateSchema.execute(
-      query: query,
-      context: context,
-      variables: variables,
-      operation_name: operation_name
-    )
+    set_result(data, context)
 
     payload = {
       result: subscription? ? { data: nil } : result.to_h,
       more: subscription?
     }
 
-    # Track the subscription here so we can remove it
-    # on unsubscribe.
+    # Track the subscription here so we can remove it on unsubscribe.
     @subscription_ids << context[:subscription_id] if result.context[:subscription_id]
 
     transmit(payload)
@@ -42,14 +31,22 @@ class GraphqlChannel < ApplicationCable::Channel
 
   private
 
+  def set_result(data, context)
+    query, operation_name = data.values_at('query', 'operationName')
+    variables = ensure_hash(data['variables'])
+
+    @result = RailsApiBoilerplateSchema.execute(
+      query: query,
+      context: context,
+      variables: variables,
+      operation_name: operation_name
+    )
+  end
+
   def ensure_hash(ambiguous_param)
     case ambiguous_param
     when String
-      if ambiguous_param.present?
-        ensure_hash(JSON.parse(ambiguous_param))
-      else
-        {}
-      end
+      ambiguous_param.present? ? ensure_hash(JSON.parse(ambiguous_param)) : {}
     when Hash, ActionController::Parameters
       ambiguous_param
     when nil

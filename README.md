@@ -25,7 +25,7 @@
 ## Main Characteristics
 
 - Language: Ruby 2.7.2+
-- Framework: Rails 6.0.3+
+- Framework: Rails 6.1.1+
 - Query language: GraphQL 1.11.6+
 - Webserver: Puma
 - Test Framework: RSpec

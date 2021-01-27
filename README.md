@@ -26,7 +26,7 @@
 
 - Language: Ruby 2.7.2+
 - Framework: Rails 6.1.1+
-- Query language: GraphQL 1.11.6+
+- Query language: GraphQL 1.12.2+
 - Webserver: Puma
 - Test Framework: RSpec
 - Databases: Postgres & Redis

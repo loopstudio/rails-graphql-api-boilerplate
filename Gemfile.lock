@@ -253,7 +253,7 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.0.0)
     uniform_notifier (1.13.2)
-    webmock (3.11.1)
+    webmock (3.11.2)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -298,7 +298,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   strong_migrations (~> 0.7.6)
   tzinfo-data
-  webmock (~> 3.11.1)
+  webmock (~> 3.11.2)
 
 RUBY VERSION
    ruby 2.7.2p137

@@ -1,15 +1,8 @@
 require 'rails_helper'
 
 describe 'Create user mutation request', type: :request do
-  subject(:request) { graphql_request(mutation_request, variables: request_variables) }
-
-  let(:first_name) { 'Obi Wan' }
-  let(:last_name) { 'Kenobi' }
-  let(:email) { 'obikenobi@rebel.com' }
-  let(:password) { 'abcd1234' }
-
-  let(:mutation_request) do
-    <<~GQL
+  let(:request!) do
+    mutation_request = <<~GQL
       mutation SignUp(
         $email: String!,
         $password: String!,
@@ -32,43 +25,32 @@ describe 'Create user mutation request', type: :request do
         }
       }
     GQL
+
+    graphql_request(
+      mutation_request,
+      variables: {
+        firstName: 'Obi Wan',
+        lastName: 'Kenobi',
+        email: email,
+        password: password
+      }
+    )
   end
 
-  let(:request_variables) do
-    {
-      firstName: first_name,
-      lastName: last_name,
-      email: email,
-      password: password
-    }
-  end
-
-  let(:response_content) { json.dig(:data, :createUser) }
+  let(:email) { 'obikenobi@rebel.com' }
+  let(:password) { 'abcd1234' }
 
   context 'with valid params' do
     let(:created_user) { User.last }
+    let(:response_content) { json.dig(:data, :createUser) }
 
-    specify do
-      request
+    include_examples 'have http status without errors', :ok
 
-      expect(errors).to be_nil
-    end
-
-    specify do
-      request
-
-      expect(response).to have_http_status(:ok)
-    end
-
-    it 'creates a user' do
-      expect {
-        request
-      }.to change(User, :count).by(1)
+    it 'creates a user', skip_request: true do
+      expect { request! }.to change(User, :count).by(1)
     end
 
     it 'returns the user data' do
-      request
-
       expect(response_content[:user]).to include_json(
         id: created_user.id.to_s,
         firstName: created_user.first_name,
@@ -77,54 +59,36 @@ describe 'Create user mutation request', type: :request do
       )
     end
 
-    specify do
-      request
+    describe 'token' do
+      let(:token) { response_content[:token] }
 
-      token = response_content[:token]
+      it { expect(token).not_to be_nil }
 
-      expect(token).not_to be_nil
-    end
-
-    it 'sets the authentication headers' do
-      request
-
-      token = response_content[:token]
-
-      expect(AuthToken.verify(token)).to eq(created_user)
+      it 'sets the authentication headers' do
+        expect(AuthToken.verify(token)).to eq(created_user)
+      end
     end
   end
 
   context 'with invalid params' do
+    shared_examples 'returns an error message and does not create a user' do
+      it { expect(first_error_message).not_to be_nil }
+
+      specify '', skip_request: true do
+        expect { request! }.not_to change(User, :count)
+      end
+    end
+
     context 'when the email is missing' do
       let(:email) { '' }
 
-      it 'returns an error message' do
-        request
-
-        expect(first_error_message).not_to be_nil
-      end
-
-      it 'does not create a user' do
-        expect {
-          request
-        }.not_to change(User, :count)
-      end
+      include_examples 'returns an error message and does not create a user'
     end
 
     context 'when the password is missing' do
       let(:password) { '' }
 
-      it 'returns an error message' do
-        request
-
-        expect(first_error_message).not_to be_nil
-      end
-
-      it 'does not create a user' do
-        expect {
-          request
-        }.not_to change(User, :count)
-      end
+      include_examples 'returns an error message and does not create a user'
     end
   end
 end

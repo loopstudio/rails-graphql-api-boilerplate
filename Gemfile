@@ -9,7 +9,7 @@ gem 'puma', '~> 5.2'
 gem 'rack-cors', '~> 1.1.1'
 
 # Graphql
-gem 'graphql', '~> 1.12.4'
+gem 'graphql', '~> 1.12.6'
 gem 'graphql-batch', '~> 0.4.3'
 
 # Database
@@ -31,19 +31,19 @@ gem 'graphiql-rails', '~> 1.7.0'
 gem 'sentry-raven', '~> 3.1.1'
 
 group :development, :test do
-  gem 'bullet', '~> 6.1.3'
+  gem 'bullet', '~> 6.1.4'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 6.1.0'
-  gem 'faker', '~> 2.16.0'
-  gem 'rspec-rails', '~> 4.0.2'
+  gem 'faker', '~> 2.17.0'
+  gem 'rspec-rails', '~> 5.0.1'
 end
 
 group :development do
   gem 'annotate', '~> 3.1.1'
   gem 'letter_opener', '~> 1.7.0'
-  gem 'listen', '>= 3.0.5', '< 3.5'
+  gem 'listen', '>= 3.0.5', '< 3.6'
   gem 'reek', '~> 6.0.3', require: false
-  gem 'rubocop', '~> 1.10.0', require: false
+  gem 'rubocop', '~> 1.12.0', require: false
   gem 'rubocop-rails', '~> 2.9.1', require: false
   gem 'rubocop-rspec', '~> 2.2.0', require: false
   gem 'spring', '~> 2.1.1'
@@ -54,7 +54,7 @@ group :test do
   gem 'rspec-json_expectations', '~> 2.2.0'
   gem 'shoulda-matchers', '~> 4.5.1'
   gem 'simplecov', '~> 0.21.2'
-  gem 'webmock', '~> 3.11.2'
+  gem 'webmock', '~> 3.12.1'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

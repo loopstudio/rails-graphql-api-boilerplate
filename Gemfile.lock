@@ -189,7 +189,7 @@ GEM
       psych (~> 3.1)
       rainbow (>= 2.0, < 4.0)
     regexp_parser (2.1.1)
-    rexml (3.2.4)
+    rexml (3.2.5)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.1)
@@ -255,7 +255,7 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.0.0)
     uniform_notifier (1.14.2)
-    webmock (3.12.1)
+    webmock (3.12.2)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -300,7 +300,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   strong_migrations (~> 0.7.6)
   tzinfo-data
-  webmock (~> 3.12.1)
+  webmock (~> 3.12.2)
 
 RUBY VERSION
    ruby 2.7.2p137

@@ -215,7 +215,7 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
-    rubocop (1.18.1)
+    rubocop (1.18.2)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
@@ -306,7 +306,7 @@ DEPENDENCIES
   reek (~> 6.0.4)
   rspec-json_expectations (~> 2.2.0)
   rspec-rails (~> 5.0.1)
-  rubocop (~> 1.18.1)
+  rubocop (~> 1.18.2)
   rubocop-rails (~> 2.11.2)
   rubocop-rspec (~> 2.4.0)
   sentry-rails

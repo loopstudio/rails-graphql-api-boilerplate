@@ -27,7 +27,7 @@ gem 'jwt', '~> 2.2.3'
 gem 'bcrypt', '~> 3.1.16'
 
 # Monitoring errors
-gem 'graphiql-rails', '~> 1.7.0'
+gem 'graphiql-rails', '~> 1.8.0'
 gem 'sentry-rails'
 gem 'sentry-ruby'
 

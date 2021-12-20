@@ -32,7 +32,7 @@ gem 'sentry-rails'
 gem 'sentry-ruby'
 
 group :development, :test do
-  gem 'bullet', '~> 6.1.5'
+  gem 'bullet', '~> 7.0.0'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 6.2.0'
   gem 'faker', '~> 2.19.0'

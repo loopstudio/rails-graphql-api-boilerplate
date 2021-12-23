@@ -248,7 +248,7 @@ GEM
     sentry-ruby-core (4.8.1)
       concurrent-ruby
       faraday
-    shoulda-matchers (5.0.0)
+    shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
     simplecov (0.21.2)
       docile (~> 1.1)
@@ -314,7 +314,7 @@ DEPENDENCIES
   rubocop-rspec (~> 2.6.0)
   sentry-rails
   sentry-ruby
-  shoulda-matchers (~> 5.0.0)
+  shoulda-matchers (~> 5.1.0)
   simplecov (~> 0.21.2)
   spring (~> 2.1.1)
   spring-watcher-listen (~> 2.0.0)

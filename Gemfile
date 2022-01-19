@@ -10,7 +10,7 @@ gem 'rack-cors', '~> 1.1.1'
 
 # Graphql
 gem 'graphql', '~> 1.13.5'
-gem 'graphql-batch', '~> 0.4.3'
+gem 'graphql-batch', '~> 0.5.0'
 
 # Database
 gem 'pg', '~> 1.2.3'

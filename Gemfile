@@ -9,7 +9,7 @@ gem 'puma', '~> 5.6'
 gem 'rack-cors', '~> 1.1.1'
 
 # Graphql
-gem 'graphql', '~> 1.13.7'
+gem 'graphql', '~> 1.13.8'
 gem 'graphql-batch', '~> 0.5.0'
 
 # Database

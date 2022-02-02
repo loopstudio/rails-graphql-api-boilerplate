@@ -103,7 +103,7 @@ GEM
       graphql (>= 1.10, < 2)
       promise.rb (~> 0.7.2)
     hashdiff (1.0.1)
-    i18n (1.9.0)
+    i18n (1.9.1)
       concurrent-ruby (~> 1.0)
     jwt (2.3.0)
     kwalify (0.7.2)
@@ -217,9 +217,9 @@ GEM
     rubocop-rspec (2.8.0)
       rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
-    sentry-rails (5.0.1)
+    sentry-rails (5.0.2)
       railties (>= 5.0)
-      sentry-ruby-core (~> 5.0.1)
+      sentry-ruby-core (~> 5.0.2)
     sentry-ruby (5.0.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       sentry-ruby-core (= 5.0.2)
@@ -258,7 +258,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.5.3)
+    zeitwerk (2.5.4)
 
 PLATFORMS
   ruby

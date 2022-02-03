@@ -14,7 +14,7 @@ gem 'graphql-batch', '~> 0.5.0'
 
 # Database
 gem 'pg', '~> 1.3.1'
-gem 'redis', '~> 4.5.1'
+gem 'redis', '~> 4.6.0'
 gem 'strong_migrations', '~> 0.7.9'
 
 # Environment variables

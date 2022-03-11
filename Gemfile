@@ -13,7 +13,7 @@ gem 'graphql', '~> 2.0.2'
 gem 'graphql-batch', '~> 0.5.1'
 
 # Database
-gem 'pg', '~> 1.3.3'
+gem 'pg', '~> 1.3.4'
 gem 'redis', '~> 4.6.0'
 gem 'strong_migrations', '~> 0.8.0'
 

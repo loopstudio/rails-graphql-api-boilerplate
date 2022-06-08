@@ -21,7 +21,7 @@ gem 'strong_migrations', '~> 1.0.0'
 gem 'dotenv-rails', '~> 2.7.6'
 
 # Authentication
-gem 'jwt', '~> 2.4.0'
+gem 'jwt', '~> 2.4.1'
 
 # Encryption
 gem 'bcrypt', '~> 3.1.18'

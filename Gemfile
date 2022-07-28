@@ -18,7 +18,7 @@ gem 'redis', '~> 4.6.0'
 gem 'strong_migrations', '~> 1.2.0'
 
 # Environment variables
-gem 'dotenv-rails', '~> 2.7.6'
+gem 'dotenv-rails', '~> 2.8.1'
 
 # Authentication
 gem 'jwt', '~> 2.4.1'
